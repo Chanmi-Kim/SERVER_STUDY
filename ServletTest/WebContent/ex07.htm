@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- ex07.htm -->
+	<h1>데이터 보내기</h1>
+	
+	<h2>폼 사용해서 데이터 보내기</h2>
+	
+	<!-- http://localhost:8088/ServletTest/ex07ok.do -->
+	<!-- http://localhost:8088/ex07ok.do -->
+	<form method="post" action="/ServletTest/ex07ok.do">
+		텍스트 박스 : <input type="text" name="txt1">
+		<hr>
+		암호 박스 : <input type="password" name="pw1">
+		<hr>
+		다중 라인 박스 : <textarea name="txt2" cols="50" rows="5"></textarea>
+		<hr>
+		체크 박스 : <input type="checkbox" name="cb1" value="강아지">
+		<hr>
+		체크 박스들 :
+		<input type="checkbox" name="cb2" value="강아지"> 강아지
+		<input type="checkbox" name="cb3" value="고양이"> 고양이
+		<input type="checkbox" name="cb4" value="병아리"> 병아리
+		<hr>
+		
+		체크 박스들 :
+		<input type="checkbox" name="cbs" value="강아지"> 강아지
+		<input type="checkbox" name="cbs" value="고양이"> 고양이
+		<input type="checkbox" name="cbs" value="병아리"> 병아리
+		<hr>
+		
+		라디오 버튼 :
+		<input type="radio" name="rb" value="y"> 동의 함
+		<input type="radio" name="rb" value="n" checked> 동의 안함
+		<hr>
+		
+		셀렉트 박스 : 
+		<select name="sel1">
+			<option value="red">빨강</option>
+			<option value="yellow">노랑</option>
+			<option value="blue">파랑</option>
+			<option value="orange">주황</option>
+			<option value="black">검정</option>
+		</select>
+		<hr>
+		
+		
+		
+		셀렉트 박스 : 
+		<select name="sel2" multiple size="5">
+			<option value="red">빨강</option>
+			<option value="yellow">노랑</option>
+			<option value="blue">파랑</option>
+			<option value="orange">주황</option>
+			<option value="black">검정</option>
+		</select>
+		<hr>
+		
+		히든 태그 :
+		<input type="hidden" name="seq" value="20">
+		<hr>
+		
+		파일 :
+		<input type="file">
+		<hr>
+		
+		HTML5 :
+		<input type="range" name="r1">
+		<hr>
+		
+		
+		
+		<input type="submit" value="보내기">
+	</form>
+	
+	
+	<!-- 
+	HTML에서 코딩하는 경우
+	'/' = http://localhost:8090/
+	'WebContent' = http://localhost:8090/ServletTest
+	-->
+	<!-- <img src="/images/catty01.png">
+	<img src="http://localhost:8088/images/catty01.png">
+	
+	<img src="/ServletTest/images/catty01.png">
+	<img src="http://localhost:8088/ServletTest/images/catty01.png"> -->
+	
+</body>
+</html>
