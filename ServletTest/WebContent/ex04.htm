@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- WebContent > ex04.htm -->
+	
+	<h1>ex04.do 서블릿 호출하기</h1>
+	
+	<h2>POST 방식으로 호출하기</h2>
+	<form method="POST" action="/ServletTest/ex04.do">
+		<input type="submit" value="호출하기">
+	</form>
+	
+	
+	
+	
+	<h2>GET 방식으로 호출하기</h2>
+	<form method="GET" action="/ServletTest/ex04.do">
+		<input type="submit" value="호출하기">
+	</form>
+	<div>주소창 URL 직접 호출하기</div>
+	<div><a href="/ServletTest/ex04.do">서블릿 호출하기</a></div>
+	<div><input type="button" value="서블릿 호출하기" onclick="location.href='/ServletTest/ex04.do';"></div>
+	<div>새로고침</div>
+	
+	
+	
+</body>
+</html>
