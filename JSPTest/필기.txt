@@ -1,0 +1,110 @@
+1. 새프로젝트 > Dynamic Web Project > "JSPTest"
+2. 새패키지 > "com.test.jsp"
+
+JSP, Java Server Pages
+- 서블릿의 다음 버전
+
+- 서블릿의 단점
+	1. HTML, CSS, JavaScript 작성이 힘듬 > 문자열 취급
+		: 자바 베이스 + a(HTML)
+- 서블릿의 장점
+	1. 자바를 사용할 수 있다. > 자바 클래스 기반
+		
+- JSP의 장점
+	1. HTML, CSS, JavaScript 작성이 쉬움 > HTML 문서 기반
+		: HTML 베이스 + a(Java)
+	2. 웹 문서 기반
+	3. 가상 주소 불필요 > *.jsp 직접 요청
+ - JSP의 단점
+ 	1. 자바 작업에 열약한 환경 > 특히 개발 툴
+
+
+WebContent > ex01.jsp
+
+
+JSP 기본 요소
+1. JSP 지시자, 지시어, JSP Directive
+2. 스크립트 요소, Scripting Elements
+3. 액션 태그, Action Tags
+
+
+1. JSP 지시자, 지시어, JSP Directive
+- <%@ XXX %>
+- JSP 페이지를 실행하기 위해 JSP 컨테이너(실행기, 톰캣)에게 해당 JSP를 처리하기 위한 여러가지 환경 설정을 한다.
+- page 지시자
+- include 지시자
+- taglib 지시자
+
+
+2. 스크립트 요소, Scripting Elements
+- <% %>
+- 자바구문을 쓸 수 있게 해준다.(=서블릿과 유사한 작업 환경을 만들어 준다.)
+- 스크립틀릿, Scriptlet(=Script + Applet)
+- 익스프레션, Expression
+- 선언부, Declaration
+
+3. 액션 태그, Action Tags
+- <jsp:XXX>, <c:XXX>, <c:if>, <c:for>
+- 프로그래밍 기능이 내재된 태그
+- JSP 기본 액션 태그
+- JSTL 확장 액션 태그
+- 사용자 커스텀 액션 태그
+
+
+
+
+page 지시자
+- <%@ page 속성="값" 속성="값" 속성="값" .. %>
+- 속성은 1개 이상 작성 가능
+- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    a. language
+    	- JSP 페이지에서 사용할 프로그래밍 언어 지정
+    
+    b. contentType
+    	- 현재 페이지의 컨텐츠에 대한 기술
+    	- contentType="text/html; charset=ISO-8859-1" // 기본값
+    	- contentType="text/html; charset=UTF-8" // 대다수의 환경
+    	- text/html : 톰캣이 크롬에게 네가 전달받는 페이지는 이런 형식이야.. 라고 알려주는 역할
+    	- charset : 톰캣이 현재 JSP를 해석할 때 사용할 인코딩
+    
+    c. pageEncoding
+		- 브라우저에게 돌려줄 웹 페이지의 인코딩 방식
+		- resp.setCharaterEncoding("UTF-8"):
+	
+	d. import
+		- 패키지 or 클래스 참조
+		- 자바의 import와 동일한 역할
+	
+	e. session
+		- true/false
+		- 기본값 true
+		- 세션 사용 유무 설정
+	
+	f. buffer
+		- JSP 페이지의 출력 버퍼 크기 지정
+		- 기본값 8kb
+		- buffer = "none"
+	
+	g. autoFlush
+		- flush : 버퍼의 내용을 일단 처리하고 깨끗하게 비운뒤 다시 업무를 시작해라.
+		- 출력 버퍼가 꽉차면 발송하고 다시 비워라.
+		- 기본값 true
+	
+	h. info
+		- 페이지 설명
+		- 설명 주석 역할
+		- 개발자용
+	
+	i. errorPage
+		- 에러 페이지로 사용할 페이지의 URL 지정
+		- 500 번대 에러
+
+
+include 지시자
+- <%@ include file="URL" %>
+- 특정 JSP/HTML 페이지를 해당 JSP 페이지의 일부 영역 삽입하는 기능
+- 조각 페이지
+- <ifraem> 태그와 유사한 역할
+- 한 페이지 이상에서 반복되는 내용을 조각 페이지로 만들어서 재사용(유지 보수성)
