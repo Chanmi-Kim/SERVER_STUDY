@@ -1,4 +1,4 @@
-﻿1. 새프로젝트 > Dynamic Web Project > "JSPTest"
+1. 새프로젝트 > Dynamic Web Project > "JSPTest"
 2. 새패키지 > "com.test.jsp"
 
 JSP, Java Server Pages
@@ -43,7 +43,6 @@ JSP 기본 요소
 - 익스프레션, Expression
 - 선언부, Declaration
 
-
 3. 액션 태그, Action Tags
 - <jsp:XXX>, <c:XXX>, <c:if>, <c:for>
 - 프로그래밍 기능이 내재된 태그
@@ -65,8 +64,8 @@ page 지시자
     
     b. contentType
     	- 현재 페이지의 컨텐츠에 대한 기술
-    	- contentType="text/html; charset=ISO-8859-1" //기본값
-    	- contentType="text/html; charset=UTF-8" //대다수의 환경
+    	- contentType="text/html; charset=ISO-8859-1" // 기본값
+    	- contentType="text/html; charset=UTF-8" // 대다수의 환경
     	- text/html : 톰캣이 크롬에게 네가 전달받는 페이지는 이런 형식이야.. 라고 알려주는 역할
     	- charset : 톰캣이 현재 JSP를 해석할 때 사용할 인코딩
     
@@ -109,84 +108,3 @@ include 지시자
 - 조각 페이지
 - <ifraem> 태그와 유사한 역할
 - 한 페이지 이상에서 반복되는 내용을 조각 페이지로 만들어서 재사용(유지 보수성)
-
-
-taglib 지시자
-- 액션 태그와 관계
-
-
-
-JSP 스크립트 요소
-- JSP 페이지(HTML) 내에서 자바 구문을 쓸 수 있도록 도와주는 역할
-- 동적으로 페이지를 만드는데 필요한 자바 비즈니스 코드 작성 + 자바 자원을 웹페이지 출력
-a. 선언문, Declaration
-b. 스크립틀릿, Scriptlet
-c. 표현식, Expression
-
-
-
-
-
-스크립틀릿, Scriptlet
-- Script + Applet
-- <% %>
-- 이 영역은 자바 영역이다.(*.java 파일이라고 생각하고 코딩하면 된다.)
-- 비즈니즈 코드 작성
-	a. 데이터 처리(Oracle)
-	b. 동적 HTML(CSS,JavaScript)
-- 사용 빈도가 가장 높음
-- ex04.jsp
-
-
-표현식, Expression
-- <%= 값 %>
-- 값 : 상수, 변수, 메소드호출 등등.. syso
-- 출력의 목적 : HTML에 소스의 일부로 남기기 위해서..(*****)
-- 출력의 목적 : 눈에 보이는 데이터를 출력한다.(X)
-- ex06_expression.jsp
-
-
-선언문, Declaration
-- <%! %>
-- 현재 JSP 페이지에서 사용할 멤버 변수와 메소드를 선언하는 영역
-- 잘 사용 안함
-- ex07_declaration.jsp
-- com.test.jsp > Ex07.java
-
-
-JSP 내장 객체, JSP Implicit Object
-- 개발자가 직접 생성하는 객체가 아니라, JSP가 미리 만들어서 제공하는 객체(톰캣이 생성)
-- 예약어 제공
-- JSP 내장 객체는 서블릿에도 동일하게 존재한다. 단, 자바에서는 직접 만들어야 한다.
-- request, response, session, pageContext, out, application, config, page, exception
-- request, response, session, pageContext > out, application > config, page, exception
-
-a. request
-	a.1 전송된 데이터 가져오기(*****)
-	a.2 전송된 데이터 인코딩
-	a.3 전송과 관련된 정보 가져오기
-	- javax.servlet.ServletRequest > javax.servlet.http.HttpServletRequest
-	- 클라이언트 -> (행동) -> 서버
-	- HTTP 요청에 관련된 정보를 제어하는 객체
-	- 전송되는 데이터 관리, 요청 정보를 제공
-	
-	- ex08_form.jsp //글쓰기 페이지
-	- ex08_process.jsp //데이터 수신 + 처리 페이지
-	
-	- ex09_form.jsp
-	- ex09_process.jsp
-	
-	- ex10_request_header.jsp
-	
-
-b. response
-	- javax.servlet.ServletResponse > javax.servlet.http.HttpServletResponse
-	- HTTP 요청에 대한 응답 정보를 제어하는 객체
-	- 서버 -> (행동) -> 클라이언트
-	b.1 돌려줄 페이지 제작 > response.getWriter() > PrintWriter
-	b.2 돌려줄 인코딩 > response.setCharaterEncoding("UTF-8")
-	b.3 돌려줄 내용의 MIME 지정(text/html)
-	b.4 페이지 이동하기
-	
-	- ex11_response_one.jsp
-	- ex11_response_two.jsp
