@@ -1,4 +1,4 @@
-1. 새프로젝트 > Dynamic Web Project > "JSPTest"
+﻿1. 새프로젝트 > Dynamic Web Project > "JSPTest"
 2. 새패키지 > "com.test.jsp"
 
 JSP, Java Server Pages
@@ -43,6 +43,7 @@ JSP 기본 요소
 - 익스프레션, Expression
 - 선언부, Declaration
 
+
 3. 액션 태그, Action Tags
 - <jsp:XXX>, <c:XXX>, <c:if>, <c:for>
 - 프로그래밍 기능이 내재된 태그
@@ -64,8 +65,8 @@ page 지시자
     
     b. contentType
     	- 현재 페이지의 컨텐츠에 대한 기술
-    	- contentType="text/html; charset=ISO-8859-1" // 기본값
-    	- contentType="text/html; charset=UTF-8" // 대다수의 환경
+    	- contentType="text/html; charset=ISO-8859-1" //기본값
+    	- contentType="text/html; charset=UTF-8" //대다수의 환경
     	- text/html : 톰캣이 크롬에게 네가 전달받는 페이지는 이런 형식이야.. 라고 알려주는 역할
     	- charset : 톰캣이 현재 JSP를 해석할 때 사용할 인코딩
     
@@ -108,3 +109,236 @@ include 지시자
 - 조각 페이지
 - <ifraem> 태그와 유사한 역할
 - 한 페이지 이상에서 반복되는 내용을 조각 페이지로 만들어서 재사용(유지 보수성)
+
+
+taglib 지시자
+- 액션 태그와 관계
+
+
+
+JSP 스크립트 요소
+- JSP 페이지(HTML) 내에서 자바 구문을 쓸 수 있도록 도와주는 역할
+- 동적으로 페이지를 만드는데 필요한 자바 비즈니스 코드 작성 + 자바 자원을 웹페이지 출력
+a. 선언문, Declaration
+b. 스크립틀릿, Scriptlet
+c. 표현식, Expression
+
+
+
+
+
+스크립틀릿, Scriptlet
+- Script + Applet
+- <% %>
+- 이 영역은 자바 영역이다.(*.java 파일이라고 생각하고 코딩하면 된다.)
+- 비즈니즈 코드 작성
+	a. 데이터 처리(Oracle)
+	b. 동적 HTML(CSS,JavaScript)
+- 사용 빈도가 가장 높음
+- ex04.jsp
+
+
+표현식, Expression
+- <%= 값 %>
+- 값 : 상수, 변수, 메소드호출 등등.. syso
+- 출력의 목적 : HTML에 소스의 일부로 남기기 위해서..(*****)
+- 출력의 목적 : 눈에 보이는 데이터를 출력한다.(X)
+- ex06_expression.jsp
+
+
+선언문, Declaration
+- <%! %>
+- 현재 JSP 페이지에서 사용할 멤버 변수와 메소드를 선언하는 영역
+- 잘 사용 안함
+- ex07_declaration.jsp
+- com.test.jsp > Ex07.java
+
+
+JSP 내장 객체, JSP Implicit Object
+- 개발자가 직접 생성하는 객체가 아니라, JSP가 미리 만들어서 제공하는 객체(톰캣이 생성)
+- 예약어 제공
+- JSP 내장 객체는 서블릿에도 동일하게 존재한다. 단, 자바에서는 직접 만들어야 한다.
+- request, response, session, pageContext, out, application, config, page, exception
+- request, response, session, pageContext > out, application > config, page, exception
+
+- request, session, pageContext, application
+	: 내부에 사용자 데이터를 저장할 수 있는 Map을 가지고 있다.(*************************)
+	: setAttribute(key, value), getAttribute(key)
+	
+
+a. request
+	a.1 전송된 데이터 가져오기(*****)
+	a.2 전송된 데이터 인코딩
+	a.3 전송과 관련된 정보 가져오기
+	- javax.servlet.ServletRequest > javax.servlet.http.HttpServletRequest
+	- 클라이언트 -> (행동) -> 서버
+	- HTTP 요청에 관련된 정보를 제어하는 객체
+	- 전송되는 데이터 관리, 요청 정보를 제공
+	
+	- ex08_form.jsp //글쓰기 페이지
+	- ex08_process.jsp //데이터 수신 + 처리 페이지
+	
+	- ex09_form.jsp
+	- ex09_process.jsp
+	
+	- ex10_request_header.jsp
+	
+
+b. response
+	- javax.servlet.ServletResponse > javax.servlet.http.HttpServletResponse
+	- HTTP 요청에 대한 응답 정보를 제어하는 객체
+	- 서버 -> (행동) -> 클라이언트
+	b.1 돌려줄 페이지 제작 > response.getWriter() > PrintWriter
+	b.2 돌려줄 인코딩 > response.setCharaterEncoding("UTF-8")
+	b.3 돌려줄 내용의 MIME 지정(text/html)
+	b.4 페이지 이동하기
+	
+	- ex11_response_one.jsp
+	- ex11_response_two.jsp
+
+
+c. pageContext
+	- javax.servlet.jsp.PageContext
+	- 페이지 실행에 필요한 컨텍스트 정보를 저장한 객체
+	
+	- ex12_pageContext_one.jsp
+	- ex12_pageContext_two.jsp
+
+
+d. session
+	- javax.servlet.http.HttpSession
+	- 클라이언트 세션 정보를 저장한 객체
+
+e. out
+	- javax.servlet.jsp.JspWriter
+	- 응답 페이지 전송을 위한 출력 스트림 객체
+	- 서블릿의 PrintWriter와 유사(쌍둥이)
+	- ex13_out.jsp
+
+f. application
+	- javax.servlet.ServletContext
+	- 애플리케이션 컨텍스트 정보를 저장한 객체
+	- 몇몇 서버 정보를 반환
+	- ex14_application.jsp
+	
+g. config
+	- javax.servlet.ServletConfig
+	- 해당 페이지의 서블릿 설정 정보를 저장한 객체
+	
+h. page
+	- javax.servlet.jsp.HttpJspPage
+	- 서블릿 객체 자신을 참조하는 객체
+
+i. exception
+	- java.lang.Throwable
+	- 예외 처리 객체
+
+
+내장 객체의 데이터 입/출력
+- pageContext, request, session, application 객체만
+- setAttribute(key, value), getAttribute(key)
+- 위의 4가지 내장 객체는 생명 주기가 서로 다르다.(*******************************)
+- 내장 객체의 생명 주기에 따른 유효범위를 영역(Scope)라고 부른다.
+- 유효 범위 영역
+	- pageContext < request < session < application
+
+- ex15_one.jsp
+- ex15_two.jsp
+- ex15_three.jsp
+
+
+session & application
+
+- ex16_count.jsp
+- ex16_count_1.jsp
+
+- ex17_scope.jsp
+- inc > ex17_sub.jsp //조각페이지
+
+
+1. JSP 기술 == Servlet 기술
+2. JSP 페이지는 클래스이다.
+
+
+
+
+액션 태그, Action Tag
+- 프로그래밍 기능이 있는 태그
+- JSP 페이지에서 자바 코드 사용 > 스크립틀릿 사용 > 스파게티 코드 생성 > 가독성 저하 > 자바의 기능을 태그 형태 제공 > 가독성 향상
+- XML 기반(문법이 엄격함. 대소문자 구분)
+	a. JSP 액션 태그
+	b. JSTL 액션 태그(*****)
+	c. 사용자 정의 태그(커스텀 태그)
+
+
+
+JSP 액션 태그
+- 표준 방식
+
+a. 페이지 흐름 제어 액션
+	- forward
+		- ex19_one.jsp
+		- ex19_two.jsp
+		
+	- include
+		- ex20_include.jsp
+		- inc > ex20_sub.jsp
+	
+b. 자바빈 액션
+	- useBean
+	- ex21_bean.jsp
+	- ex22_bean.jsp
+	
+
+<jsp:useBean> 액션 태그
+- 자바 빈을 취급하는 태그
+
+자바 빈, Java Bean
+- 자바 객체(인스턴스)
+
+자바빈 설계 규약
+1. 멤버 변수는 반드시 private 선언한다.
+2. 반드시 getter와 setter를 구현한다.
+3. set멤버명(), get멤버명()
+4. getter는 매개변수를 가질 수 없다.
+5. setter는 매개변수를 반드시 가져야 한다.(1개 이상)
+6. 읽기 전용 멤버는 구현 가능하다.(getter만 구현 가능)
+7. 쓰기 전용 멤버는 구현할 수 없다.(setter만 구현)
+8. 생성자 매개변수가 구현할 수 없다.(기본 생성자만 구현 가능)
+
+<jsp:useBean id="자바빈 객체명" class="자바빈 클래스명" scope="사용 영역"></jsp:useBean>
+- scope: page(기본), request, session, application 중 하나
+
+<jsp:setProperty name="자바빈 객체명" property="속성명" value="값" />
+- 쓰기
+
+<jsp:getProperty name="자바빈 객체명" property="속성명" />
+- 읽기
+
+
+- ex23_bean_form.jsp //데이터 입력 + 전송
+- ex23_bean_ok.jsp //데이터 수신 + 처리
+
+- ex24_scope_one.jsp
+- ex24_scope_two.jsp
+- ex24_scope_three.jsp
+	
+c. 애플릿 액션(X)
+
+
+
+
+쿠키, Cookie
+- 사용자 정보 객체
+- JavaScript 조작
+- Java 조작
+
+
+
+세션, Session
+- 사용자 접속 객체
+- 접속한 사용자의 개인 정보를 관리하는 객체
+- 만료 시간
+
+- ex25_cookie.jsp
+- ex25_cookie_1.jsp
