@@ -1,0 +1,25 @@
+﻿Short Circuit Evaluation
+- 언어마다 정책이 다름
+- 자바 기준
+
+String data = ?;
+
+if (data != null && data.equals("y")) {
+
+}
+
+if (true || false) {
+}
+
+if (data != null) {
+ if (data.equals("y")) {
+ }
+}
+
+
+
+
+
+
+
+
