@@ -334,11 +334,71 @@ c. 애플릿 액션(X)
 - Java 조작
 
 
+- ex25_cookie.jsp
+- ex25_cookie_1.jsp
+
+- ex26_cookie_one.jsp
+- ex26_cookie_two.jsp
+- ex26_cookie_three.jsp
+
+- ex27_cookie_form.jsp
+- ex27_cookie_ok.jsp
+
+- ex28_cookie_one.jsp
+- ex28_cookie_two.jsp
+
+
+
+
+
 
 세션, Session
 - 사용자 접속 객체
 - 접속한 사용자의 개인 정보를 관리하는 객체
 - 만료 시간
 
-- ex25_cookie.jsp
-- ex25_cookie_1.jsp
+- ex29_session.jsp
+- ex29_set.jsp
+- ex29_del.jsp
+- ex29_reset.jsp
+- ex29_interval.jsp
+
+
+
+- ex30_error.jsp
+- ex30_error_null.jsp
+- ex30_error_index.jsp
+
+
+
+파일 업로드
+- 클라이언트 측 자원 -> 서버 측 전송 : 파일 복사
+
+파일 다운로드
+- 서버 측 자원 -> 클라이트 측 전송 : 파일 복사
+
+JDK & JRE
+- 파일 업로드 기능 구현 안됨
+
+파일 업로드 라이브러리
+1. COS > cos.jar
+	- http://www.servlets.com > com.oreilly.servlet > cos-20.08.zip
+
+
+//단일 파일 업로드
+- ex31_file_form.jsp
+- ex31_file_ok.jsp
+- WebContent > files 폴더 생성
+
+//다중 파일 업로드
+- ex32_file_form.jsp
+- ex32_file_ok.jsp
+
+
+이미지 썸네일
+- JAI, Java Advanced Imaging, 이미지 편집 라이브러리
+- jai_core.jar + jai_codec.jar
+
+
+- ex33_thumbnail_form.jsp
+- ex33_thumbnail_ok.jsp
