@@ -98,24 +98,37 @@
 		pageContext.setAttribute("s1", s1);
 		%>
 		<!-- 순수 자바 데이터 : s1 -->
-		<div>이름(나이) : </div>
-		<div>평균 점수 : </div>
-		
+		<div>이름(나이) : <%= s1.getName() %>(<%= s1.getAge() %>)</div>
+		<div>평균 점수 : <%= (s1.getKor() + s1.getEng() + s1.getMath()) / 3.0 %></div>
+		<br>
+
 		<!-- pageContext 데이터 : 자바 표현식 -->
-		<div>이름(나이) : </div>
-		<div>평균 점수 : </div>
-		
+		<div>이름(나이) : <%= ((Student)pageContext.getAttribute("s1")).getName() %>(<%= ((Student)pageContext.getAttribute("s1")).getAge() %>)</div>
+		<div>평균 점수 : <%= (((Student)pageContext.getAttribute("s1")).getKor() + ((Student)pageContext.getAttribute("s1")).getEng() + ((Student)pageContext.getAttribute("s1")).getMath()) / 3.0 %></div>
+		<br>
+
 		<!-- pageContext 데이터 : EL -->
-		<div>이름(나이) : </div>
-		<div>평균 점수 : </div>
+		<div>이름(나이) : ${s1.name}(${s1.age})</div>
+		<div>평균 점수 : ${(s1.kor + s1.eng + s1.math) / 3.0}</div>
+
+
+
+		<!-- 왜 자바 객체를 직접 사용 안하고 굳이 pageContext 안에 집어 넣어서 EL을 사용하는지? -->
+
+		<%
+		//A페이지에서 사용하던 DB 자원 s1을
+		//B페이지에서 계속 사용하고 싶다.
+		// 1. B페이지도 DB를 갔다온다.
+		// 2. B페이지는 DB를 사용하지 않고 대신 A페이지에서 쓰던 자원 s1을 전달받아 사용한다.
+
+		request.setAttribute("s1", s1);
+
+		pageContext.forward("ex34_el_two.jsp");
+
+		%>
 		
 		
 	</div>
-	
-	
-	
-	
-	
 	
 	<br><br><br><br><br><br><br><br><br><br>
 </body>
