@@ -1,4 +1,4 @@
-package com.test.jsp;
+﻿package com.test.jsp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ public class DBUtil {
 		
 		Connection conn = null;
 		
-		String url = "jdbc:oracle:thin:@localhost:1522:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String id = "hr";
 		String password = "java1234";
 		
