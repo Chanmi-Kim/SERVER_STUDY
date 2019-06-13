@@ -402,3 +402,56 @@ JDK & JRE
 
 - ex33_thumbnail_form.jsp
 - ex33_thumbnail_ok.jsp
+
+
+
+EL, Expression Language
+- <%= %> : Expression
+- HTML 문서에 원하는 내용을 출력하는 역할
+- 전용 언어
+- ${속성명}
+- 일반 자바 데이터를 출력하지 못하고, pageContext, request, session, application 객체내의
+  저장소의 데이터만 출력이 가능하다.
+- ex34_el.jsp
+- ex35_el.jsp
+
+
+
+EL
+- 자바의 출력 기능 대신하는 역할
+
+JSP 액션 태그
+- <jsp:XXX>
+
+JSTL 액션 태그
+- 기존의 JSP 액션 태그의 역할
+- 자바의 제어 기능 대신하는 역할
+	- 변수 생성
+	- 조건문
+	- 반복문
+- EL을 지원(******************)
+
+- ex36_jstl.jsp
+
+
+주소록
+- CRUD 구현
+- JSP Model 1 + JDBC + Oracle
+1. 주소록 쓰기
+2. 주소록 읽기
+3. 주소록 수정하기
+4. 주소록 삭제하기
+
+데이터
+- 번호(PK), 이름, 주소, 나이, 성별, 연락처
+
+페이지 구성
+- WebContent > address 폴더 생성
+1. list.jsp : 주소록 읽기(시작 페이지)
+2. add.jsp / addok.jsp : 주소록 쓰기
+3. edit.jsp / editok.jsp : 주소록 수정하기
+4. delok.jsp : 주소록 삭제하기
+5. template.jsp : 레이아웃 작업
+
+- WebContent > address > css 폴더 생성
+1. main.css : 공통 CSS 구현
