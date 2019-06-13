@@ -1,0 +1,109 @@
+/* main.css */
+
+html, body {
+	margin: 0px;
+	padding: 0px;	
+}
+
+body, table, th, td, div, span, p, input, textarea, ul, ol, dl, li, dd, dt, a, blockquote, option, button, select {
+	color: #444;
+	font-size: 16px;
+	font-family: "경기천년제목 Light";
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #444;
+	font-family: "빙그레체";
+}
+
+a {
+	text-decoration: none;	
+}
+
+a:hover {
+	color: tomato;
+}
+
+.table {
+	border: 1px solid #aaa;
+	border-collapse: collapse;
+}
+
+.table th, .table td {
+	border: 1px solid #aaa;
+	padding: 7px;
+}
+
+.table th {
+	background-color: #eee;
+}
+
+.control {
+	border: 1px solid #aaa;
+	background-color: #fff;
+	padding: 3px;
+	border-radius: 3px;	
+}
+
+.control.short {
+	width: 100px;
+}
+
+.control.medium {
+	width: 200px;
+}
+
+.control.long {
+	width: 280px;
+}
+
+/* ----------------------------------- */
+
+.main {
+	width: 600px;
+	margin: 0px auto;
+}
+
+.main > h1 > small {
+	font-size: 18px;
+	color: #777;
+}
+
+
+.btns {
+	margin-top: 15px;
+}
+
+.btns > input {
+	padding: 5px 20px;
+	cursor: pointer;
+}
+
+.btns > input:hover {
+	box-shadow: 0px 0px 3px #aaa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
