@@ -17,9 +17,33 @@
 </style>
 <script>
 
-	$(function() {
+	window.onload = function() {
 		
-	});
+		//입력 폼 데이터 넣기
+		add();
+		
+	}
+	
+	function add() {
+		//임의의 주소록 데이터 생성 > 컨트롤 대입
+		var name = document.getElementsByName("name")[0];
+		var age = document.getElementsByName("age")[0];
+		var gender = document.getElementsByName("gender")[0];
+		var tel = document.getElementsByName("tel")[0];
+		var address = document.getElementsByName("address")[0];
+		
+		var nameData = [ "홍길동", "아무개", "하하하", "호호호", "후후후" ];
+		var genderData = [ "m", "f" ];
+		var telData = [ "010-1234-5678", "010-4321-7654", "010-9845-0684" ];
+		var addressData = [ "서울시 강남구 대치동", "서울시 강동구 둔촌동", "서울시 강서구 목동" ];
+		
+		name.value = nameData[parseInt(Math.random() * nameData.length)];
+		age.value = parseInt(Math.random() * 40) + 20;
+		gender.value = genderData[parseInt(Math.random() * genderData.length)];
+		tel.value = telData[parseInt(Math.random() * telData.length)];
+		address.value = addressData[parseInt(Math.random() * addressData.length)];
+		
+	}
 	
 </script>
 </head>
@@ -58,7 +82,8 @@
 				</tr>
 			</table>
 			<div class="btns">
-				<input type="button" value="돌아가기" class="control">
+				<input type="button" value="돌아가기" class="control"
+					onclick="location.href='list.jsp';">
 				<input type="submit" value="추가하기" class="control">
 			</div>
 			</form>
