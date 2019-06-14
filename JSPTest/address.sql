@@ -15,8 +15,8 @@ insert into tblAddress (seq, name, age, tel, gender, address)
     values (address_seq.nextval, '홍길동', 20, '010-1234-5678', 'm', '서울시 강남구 역삼동');
 
 select * from tblAddress;
-
-
+delete from tblAddress;
+commit;
 
 
 
