@@ -13,52 +13,94 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	
-	
+
+
 	<!-- 예외 종류에 따른 에러 페이지 지정하기 -->
-	<!-- 
-	<error-page>
-		<exception-type>java.lang.NullPointerException</exception-type>
-		<location>/ex30_error_null.jsp</location>
-	</error-page>
-	
-	<error-page>
-		<exception-type>java.lang.ArrayIndexOutOfBoundsException</exception-type>
-		<location>/ex30_error_index.jsp</location>
-	</error-page> 
-	-->
-	
-	<error-page>
-		<error-code>500</error-code>
-		<location>/ex30_error_index.jsp</location>
-	</error-page>
-	
-	<error-page>
-		<error-code>404</error-code>
-		<location>/ex30_error_null.jsp</location>
-	</error-page>
+	<!-- <error-page> <exception-type>java.lang.NullPointerException</exception-type> 
+		<location>/ex30_error_null.jsp</location> </error-page> <error-page> <exception-type>java.lang.ArrayIndexOutOfBoundsException</exception-type> 
+		<location>/ex30_error_index.jsp</location> </error-page> -->
+	<!-- <error-page> <error-code>500</error-code> <location>/ex30_error_index.jsp</location> 
+		</error-page> <error-page> <error-code>404</error-code> <location>/ex30_error_null.jsp</location> 
+		</error-page> -->
+
 
 	<servlet>
 		<servlet-name>hello</servlet-name>
 		<servlet-class>com.test.mvc.Hello</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>hello</servlet-name>
 		<url-pattern>/mvc/hello.do</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	
+	
+	
+	
+	<!-- 코드 게시판 -->
+	<servlet>
+		<servlet-name>template</servlet-name>
+		<servlet-class>com.test.code.Template</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>template</servlet-name>
+		<url-pattern>/code/template.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>add</servlet-name>
+		<servlet-class>com.test.code.Add</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>add</servlet-name>
+		<url-pattern>/code/add.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>addok</servlet-name>
+		<servlet-class>com.test.code.AddOk</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>addok</servlet-name>
+		<url-pattern>/code/addok.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	
+	
+	<servlet>
+		<servlet-name>list</servlet-name>
+		<servlet-class>com.test.code.List</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>list</servlet-name>
+		<url-pattern>/code/list.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	
+	<servlet>
+		<servlet-name>view</servlet-name>
+		<servlet-class>com.test.code.View</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>view</servlet-name>
+		<url-pattern>/code/view.do</url-pattern>
+	</servlet-mapping>
 
 </web-app>
-
-
-
-
-
-
-
-
-
-
-
-
-
