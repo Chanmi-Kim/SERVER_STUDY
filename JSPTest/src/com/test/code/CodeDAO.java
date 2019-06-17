@@ -62,6 +62,93 @@ public class CodeDAO {
 		
 		return null;
 	}
+
+	public int add(CodeDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblCode (seq, category, subject, code, description, regdate) values (code_seq.nextval, ?, ?, ?, ?, default)";
+			
+			stat = conn.prepareStatement(sql);
+			
+			stat.setString(1, dto.getCategory());
+			stat.setString(2, dto.getSubject());
+			stat.setString(3, dto.getCode());
+			stat.setString(4, dto.getDescription());
+			
+			return stat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return 0;
+	}
+
+	public ArrayList<CodeDTO> list() {
+		
+		try {
+			
+			ArrayList<CodeDTO> list = new ArrayList<CodeDTO>();
+			
+			String sql = "select seq, subject, category, (select name from tblCategory where seq = c.category) as categoryName, (select color from tblCategory where seq = c.category) as categoryColor, regdate from tblCode c order by regdate desc";
+			
+			stat = conn.prepareStatement(sql);
+			rs = stat.executeQuery();
+			
+			while (rs.next()) {
+				CodeDTO dto = new CodeDTO();
+				
+				dto.setSeq(rs.getString("seq"));
+				dto.setCategory(rs.getString("category"));
+				dto.setCategoryName(rs.getString("categoryName"));//신규
+				dto.setCategoryColor(rs.getString("categoryColor"));//신규
+				dto.setSubject(rs.getString("subject"));
+				dto.setRegdate(rs.getString("regdate"));
+				
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return null;
+	}
+
+	public CodeDTO get(String seq) {
+		
+		try {
+			
+			CodeDTO dto = new CodeDTO();
+			
+			String sql = "select seq, subject, category, (select name from tblCategory where seq = c.category) as categoryName, (select color from tblCategory where seq = c.category) as categoryColor, regdate, code, description from tblCode c where seq = ?";
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, seq);
+			
+			rs = stat.executeQuery();
+			
+			if (rs.next()) {
+				dto.setSeq(rs.getString("seq"));
+				dto.setCategory(rs.getString("category"));
+				dto.setCategoryName(rs.getString("categoryName"));
+				dto.setCategoryColor(rs.getString("categoryColor"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setRegdate(rs.getString("regdate"));
+				dto.setCode(rs.getString("code"));
+				dto.setDescription(rs.getString("description"));
+			}
+			
+			return dto;
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return null;
+	}
 	
 }
 
