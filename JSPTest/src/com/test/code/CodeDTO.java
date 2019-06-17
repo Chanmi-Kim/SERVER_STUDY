@@ -7,6 +7,8 @@ public class CodeDTO {
 	private String description;
 	private String code;
 	private String category;
+	private String categoryName;
+	private String categoryColor;
 	private String regdate;
 	
 	public String getSeq() {
@@ -44,6 +46,18 @@ public class CodeDTO {
 	}
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	public String getCategoryColor() {
+		return categoryColor;
+	}
+	public void setCategoryColor(String categoryColor) {
+		this.categoryColor = categoryColor;
 	}
 	
 	
