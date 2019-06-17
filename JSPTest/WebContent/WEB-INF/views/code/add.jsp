@@ -26,7 +26,7 @@
 		<jsp:include page="/inc/codeheader.jsp"></jsp:include>
 		<div id="content">
 			
-			<form method="POST" action="/JSPTest/code/addok.do`">
+			<form method="POST" action="/JSPTest/code/addok.do">
 			<table id="tbl1" class="table table-bordered">
 				<tr>
 					<th>과목</th>
