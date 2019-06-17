@@ -522,3 +522,60 @@ Hello 만들기
 
 2. JSP
 	WebContent > mvc > hello.jsp
+
+
+
+
+JSP Model 2
+- JSP MVC
+- CRUD
+- 코드 관리 프로그램(게시판)
+- 코드 + 설명 + 관리 + 싱글 유저
+
+
+- JSPTest > code.sql
+
+- com.test.code 패키지 생성
+- WebContent > WEB-INF > views 폴더 생성
+- WebContent > WEB-INF > views > code 폴더 생성
+
+- 게시물 쓰기
+	- com.test.code > Add.java
+	- com.test.code > AddOk.java
+	- views > code > add.jsp
+	- views > code > addok.jsp
+- 게시물 목록
+	- com.test.code > List.java
+	- views > code > list.jsp
+- 게시물 상세보기
+	- com.test.code > View.java
+	- views > code > view.jsp
+- 게시물 수정
+	- com.test.code > Edit.java
+	- com.test.code > EditOk.java
+	- views > code > edit.jsp
+	- views > code > editok.jsp
+- 게시물 삭제
+	- com.test.code > DelOk.java
+	- views > code > delok.jsp
+- 데이터 모델
+	- com.test.code > DBUtil.java //복사
+	- com.test.code > CodeDAO.java
+	- com.test.code > CodeDTO.java
+	- com.test.code > CategoryDTO.java
+- 클라이언트 자원
+	- WebContent > css, js //jQuery, Bootstrap 그대로 사용
+	- WebContent > css > code.css //공통 CSS 파일
+- 조각 페이지
+	- WebContent > inc > codeheader.jsp //상단부 공통 JSP
+	- WebContent > inc > codefooter.jsp //하단부 공통 JSP
+	- WebContent > inc > codeasset.jsp //리소스 JSP
+
+- 템플릿
+	- com.test.code > Template.java
+	- views > code > template.jsp
+
+JSP MVC(Model 2)
+- 브라우저 요청 > 서블릿(Template.java) 응답 > 서블릿 업무 > JSP 호출 > JSP 업무 > 반환 HTML 완성 > 브라우저 응답
+
+
