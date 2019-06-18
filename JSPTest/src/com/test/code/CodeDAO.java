@@ -149,6 +149,48 @@ public class CodeDAO {
 		
 		return null;
 	}
+
+	public int edit(CodeDTO dto) {
+		
+		try {
+			
+			String sql = "update tblCode set category = ?, subject = ?, code = ?, description = ? where seq = ?";
+			
+			stat = conn.prepareStatement(sql);
+			
+			stat.setString(1, dto.getCategory());
+			stat.setString(2, dto.getSubject());
+			stat.setString(3, dto.getCode());
+			stat.setString(4, dto.getDescription());
+			stat.setString(5, dto.getSeq());
+			
+			return stat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return 0;
+	}
+
+	public int del(String seq) {
+		
+		try {
+			
+			String sql = "delete from tblCode where seq = ?";
+			
+			stat = conn.prepareStatement(sql);
+			
+			stat.setString(1, seq);
+			
+			return stat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		
+		return 0;
+	}
 	
 }
 
