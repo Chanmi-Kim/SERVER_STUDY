@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 
@@ -102,5 +102,59 @@
 		<servlet-name>view</servlet-name>
 		<url-pattern>/code/view.do</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	
+	
+	
+	<servlet>
+		<servlet-name>edit</servlet-name>
+		<servlet-class>com.test.code.Edit</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>edit</servlet-name>
+		<url-pattern>/code/edit.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>editok</servlet-name>
+		<servlet-class>com.test.code.EditOk</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editok</servlet-name>
+		<url-pattern>/code/editok.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
+	
+	<servlet>
+		<servlet-name>delok</servlet-name>
+		<servlet-class>com.test.code.DelOk</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>delok</servlet-name>
+		<url-pattern>/code/delok.do</url-pattern>
+	</servlet-mapping>
 
 </web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
