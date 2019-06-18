@@ -35,17 +35,47 @@ public class View extends HttpServlet {
 		//dto.setCode(dto.getCode().replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"));
 		
 		//현재 언어 : 자바 -> 몇몇 키워드
-		String[] keyword1 = { "public", "private", "static", "class", "return", "package", "import", "null", "try", "catch" }; //파란색
-		String[] keyword2 = { "int", "String", "Connection", "Exception" };
+		/*
+		 * String[] keyword1 = { "public", "private", "static", "class", "return",
+		 * "package", "import", "null", "try", "catch" }; //파란색 String[] keyword2 = {
+		 * "int", "String", "Connection", "Exception" };
+		 * 
+		 * for (String word : keyword1) { dto.setCode(dto.getCode().replace(word,
+		 * "<span style='color:cornflowerblue'>" + word + "</span>")); }
+		 * 
+		 * for (String word : keyword2) { dto.setCode(dto.getCode().replace(word,
+		 * "<span style='color:tomato'>" + word + "</span>")); }
+		 */
 		
-		for (String word : keyword1) {
-			dto.setCode(dto.getCode().replace(word, "<span style='color:cornflowerblue'>" + word + "</span>"));
-		}
 		
-		for (String word : keyword2) {
-			dto.setCode(dto.getCode().replace(word, "<span style='color:tomato'>" + word + "</span>"));
-		}
 		
+		
+		//구문 하일라이터 > 어떤 파일 지정?
+		//dto.category
+		//1. *.js
+		//2. brush 
+		String js = "";
+		String brush = "";
+		
+		if (dto.getCategory().equals("1") || dto.getCategory().equals("3") || dto.getCategory().equals("7")) {
+			js = "shBrushJava.js";
+			brush = "java";
+		} else if (dto.getCategory().equals("2")) {
+			js = "shBrushSql.js";
+			brush = "sql";
+		} else if (dto.getCategory().equals("4") || dto.getCategory().equals("8")) {
+			js = "shBrushXml.js";
+			brush = "xml";
+		} else if (dto.getCategory().equals("5")) {
+			js = "shBrushCss.js";
+			brush = "css";
+		} else if (dto.getCategory().equals("6")) {
+			js = "shBrushJScript.js";
+			brush = "js";
+		} 
+		
+		req.setAttribute("js", js);
+		req.setAttribute("brush", brush);
 		req.setAttribute("dto", dto);
 		
 		RequestDispatcher dispatcher 
