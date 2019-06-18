@@ -7,6 +7,13 @@
 	<meta charset="UTF-8" />
 	<title>Code</title>
 	<jsp:include page="/inc/codeasset.jsp"></jsp:include>
+	
+	<script type="text/javascript" src="/JSPTest/scripts/shCore.js"></script>
+	<script type="text/javascript" src="/JSPTest/scripts/${js}"></script>
+	
+	<link type="text/css" rel="stylesheet" href="/JSPTest/styles/shCoreDefault.css"/>
+	<link type="text/css" rel="stylesheet" href="/JSPTest/styles/shThemeMidnight.css"/>
+	
 	<style>
 		#tbl1 th { width: 140px; }
 		#tbl1 td { width: 600px; }
@@ -14,10 +21,12 @@
 			resize: none;
 			height: 200px;
 		}
-		#tbl1 td pre { width: 590px; /* white-space: pre-wrap; */ }
+		#tbl1 td pre { width: 590px !important; /* white-space: pre-wrap; */ }
+		#tbl1 tr td > div > div { width: 590px !important; }
+		#tbl1 tr td > div > div > table { width: 590px !important; }
 	</style>
 	<script>
-	
+		SyntaxHighlighter.all();
 	</script>
 </head>
 <body>
@@ -27,6 +36,8 @@
 	
 		<jsp:include page="/inc/codeheader.jsp"></jsp:include>
 		<div id="content">
+			
+			
 			
 			
 			<table id="tbl1" class="table table-bordered">
@@ -40,7 +51,10 @@
 				</tr>
 				<tr>
 					<th>코드</th>
-					<td><pre>${dto.code}</pre></td>
+					<td>
+						<%-- <pre>${dto.code}</pre> --%>
+						<pre class="brush: ${brush};">${dto.code}</pre>
+					</td>
 				</tr>
 				<tr>
 					<th>설명</th>
@@ -52,8 +66,12 @@
 				</tr>
 			</table>
 			<div id="btns">
-				<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-hand-left"></span> 돌아가기</button>
-				<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-saved"></span> 등록하기</button>
+			
+				<button type="button" class="btn btn-default" onclick="location.href='/JSPTest/code/list.do';"><span class="glyphicon glyphicon-hand-left"></span> 돌아가기</button>
+				
+				<button type="button" class="btn btn-success" onclick="location.href='/JSPTest/code/edit.do?seq=${dto.seq}';"><span class="glyphicon glyphicon-saved"></span> 수정하기</button>
+				<button type="button" class="btn btn-success" onclick="location.href='/JSPTest/code/delok.do?seq=${dto.seq}';"><span class="glyphicon glyphicon-saved"></span> 삭제하기</button>
+				
 			</div>
 			
 		</div>
