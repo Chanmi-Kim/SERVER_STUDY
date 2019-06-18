@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Address</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+	
+	<servlet>
+		<servlet-name>list</servlet-name>
+		<servlet-class>com.test.address.List</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>list</servlet-name>
+		<url-pattern>/list.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>add</servlet-name>
+		<servlet-class>com.test.address.Add</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>add</servlet-name>
+		<url-pattern>/add.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>addok</servlet-name>
+		<servlet-class>com.test.address.AddOk</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addok</servlet-name>
+		<url-pattern>/addok.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>view</servlet-name>
+		<servlet-class>com.test.address.View</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>view</servlet-name>
+		<url-pattern>/view.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>edit</servlet-name>
+		<servlet-class>com.test.address.Edit</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>edit</servlet-name>
+		<url-pattern>/edit.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>editok</servlet-name>
+		<servlet-class>com.test.address.EditOk</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>editok</servlet-name>
+		<url-pattern>/editok.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>del</servlet-name>
+		<servlet-class>com.test.address.Del</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>del</servlet-name>
+		<url-pattern>/del.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>delok</servlet-name>
+		<servlet-class>com.test.address.DelOk</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delok</servlet-name>
+		<url-pattern>/delok.do</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
