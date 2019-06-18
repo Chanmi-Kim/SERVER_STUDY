@@ -1,0 +1,104 @@
+문제. CRUD 사이트 구현하시오. + JSP Model 2
+
+주제. 주소록
+
+데이터베이스
+테이블 : tblAddress(seq, name, age, tel, gender, address, regdate)
+
+업무
+1. 쓰기
+2. 읽기
+3. 상세보기
+4. 수정
+5. 삭제
+
+
+
+페이지 구성
+
+1. 목록(시작)
+	- List.java + list.jsp
+2. 쓰기
+	- Add.java + add.jsp
+	- AddOk.java + addok.jsp
+3. 상세보기
+	- View.java + view.jsp
+4. 수정
+	- Edit.java + edit.jsp
+	- EditOk.java + editok.jsp
+5. 삭제
+	- Del.java + del.jsp
+	- DelOk.java + delok.jsp
+6. DB
+	- AddressDAO.java
+	- AddressDTO.java
+	- DBUtil.java : 복사
+
+파일 생성
+1. com.test.address 패키지 생성
+2. WebContent > WEB-INF > views > address 폴더 생성
+3. WebContent > css : 복사
+4. WebContent > js : 복사
+5. WebContent > images : 복사
+6. WebContent > fonts : 복사
+7. WebContent > WEB-INF > lib : 복사
+
+
+web.xml
+
+list - com.test.address.List - /list.do
+add - com.test.address.Add - /add.do
+addok - com.test.address.AddOk - /addok.do
+view - com.test.address.View - /view.do
+edit - com.test.address.Edit - /edit.do
+editok - com.test.address.EditOk - /editok.do
+del - com.test.address.Del - /del.do
+delok - com.test.address.DelOk - /delok.do
+
+
+
+
+1. 쓰기 작업
+Add.java > add.jsp > AddOk.java > AddressDAO.java + AddressDTO.java > addok.jsp
+
+2. 목록 작업
+List.java > AddressDAO.java > list.jsp
+
+3. 보기 작업
+list.jsp > View.java > AddressDAO.java > view.jsp
+
+4. 수정 작업
+view.jsp > Edit.java > AddrssDAO.java > edit.jsp > EditOk.java > AddressDAO.java > editok.jsp
+
+5. 삭제 작업
+view.jsp > Del.java > del.jsp > DelOk.java > AddressDAO.java > delok.jsp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
