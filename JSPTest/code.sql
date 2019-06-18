@@ -1,4 +1,4 @@
-﻿-- JSPTest > code.sql
+-- JSPTest > code.sql
 
 -- 수업(공부) 때 기억해야 할 코드+설명 저장
 -- 과목 테이블
@@ -39,3 +39,21 @@ select * from tblCode;
 
 select seq, subject, category, (select name from tblCategory where seq = c.category) as categoryName
 , regdate from tblCode c order by regdate desc;
+
+
+
+
+
+
+
+select * from tblAddress;
+
+
+
+
+
+
+
+
+
+
