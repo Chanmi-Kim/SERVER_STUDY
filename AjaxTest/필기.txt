@@ -1,0 +1,84 @@
+새 프로젝트 생성
+- Dynamic Web Project > "AjaxTest" > web.xml 체크
+
+패키지
+- com.test.ajax
+
+뷰
+- WebContent > WEB-INF > views
+
+라이브러리
+- WebContent > WEB-INF > lib
+	- cos.jar
+	- odbcXX.jar
+	- jstl-1.2.jar
+- WebContent > css : JSPTest
+- WebContent > js : JSPTest
+- WebContent > inc : JSPTest
+- WebContent > images : JSPTest
+- WebContent > fonts : JSPTest
+	
+
+현 상태
+- JSP MVC : 패키지 + views
+- jQuery
+- Bootstrap
+- Highcharts
+- Oracle
+- EL + JSTL
+- 파일 업로드
+
+
+
+Ajax, Asynchronous JavaScript and XML
+- JavaScript 기술
+- 비동기 자바스크립트 그리고 XML
+- 자바스크립트 기반 비동기 통신 기법
+- 브라우저와 웹서버간의 자바스크립트를 사용한 데이터를 주고 받는 기술
+- 여태껏 : 브라우저(크롬) <-> 웹서버(아파치톰캣)
+- 시각적 특징 : 통신하는 모습이 눈에 안보인다.
+
+- 반드시 해야 되는가?
+- : 클라이언트 환경 편해진다. > 데스크톱 환경같은 분위기를 제공한다.(페이지 새로 고침이 최소화된다.)
+
+
+DB
+- AjaxTest > ajax.sql
+- com.test.ajax > AjaxDAO.java
+- com.test.ajax > AjaxDTO.java
+- com.test.ajax > DBUtil.java 복사
+
+- Ex01.java
+- ex01.jsp
+
+- Ex02.java
+- ex02.jsp
+- Ex02Data.java
+- ex02data.jsp
+
+
+- Ex03.java
+- ex03.jsp
+- Ex03Data.java
+- ex03data.jsp
+
+
+- Ex04.java
+- ex04.jsp
+- Ex04Data.java
+- ex04data.jsp
+
+- IdCheck.java
+- idcheck.jsp
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
