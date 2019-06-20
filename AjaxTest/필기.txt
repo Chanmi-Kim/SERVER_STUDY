@@ -1,4 +1,4 @@
-새 프로젝트 생성
+﻿새 프로젝트 생성
 - Dynamic Web Project > "AjaxTest" > web.xml 체크
 
 패키지
@@ -70,6 +70,51 @@ DB
 
 - IdCheck.java
 - idcheck.jsp
+
+-------------------
+
+화면에 보여지는 페이지
+- Ex05.java
+- ex05.jsp
+
+Ajax의 요청을 받아서 데이터 입출력 페이지
+- Ex05Data.java
+- ex05data.jsp
+
+평범한 웹 요청을 받아서 데이터 입출력 페이지
+- Ex05Ok.java
+- ex05ok.jsp
+
+
+- Ex05Data_3.java
+- Ex05Data_4.java
+- ex05data_4.jsp
+
+
+
+- Ex06.java
+- ex06.jsp
+- Ex06Data.java
+- Ex06Address.java
+- ex06address.jsp
+
+
+Ajax 응답 페이지
+1. Servlet + JSP > 반환 데이터 페이지 생성
+2. Servlet(PrintWriter) > 반환 데이터 페이지 생성
+
+
+- Ex07.java
+- ex07.jsp
+
+- Ex07Data.java
+
+
+- Ex08.java
+- ex08.jsp
+
+- Ex08Data.java
+
 
 
 
