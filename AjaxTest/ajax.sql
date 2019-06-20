@@ -14,6 +14,67 @@ create table tblResearch (
     cnt4 number default 0 not null
 );
 
+insert into tblResearch values (1, '사용 가능한 프로그래밍 언어는?'
+                    , 'JAVA', 'Python', 'Visual Basic', 'Kotlin'
+                    , default, default, default, default);
+
+commit;
+
+
+select * from tblResearch; 
+
+update tblResearch set
+    cnt1 = 30,
+    cnt2 = 17,
+    cnt3 = 25,
+    cnt4 = 15
+    where seq = 1;
+
+commit;
+
+
+select * from tblUser;
+
+
+
+
+
+
+
+
+
+
+create table zipcode  (
+   seq                  NUMBER(10)                        not null,
+   zipcode              VARCHAR2(50),
+   sido                 VARCHAR2(50),
+   gugun                VARCHAR2(50),
+   dong                 VARCHAR2(50),
+   bunji                VARCHAR2(50),
+   constraint PK_ZIPCODE primary key (seq)
+);
+
+select * from zipcode;
+
+
+select * from tblInsa;
+
+-- 고양이 위치 테이블
+create table tblCat (
+    catid varchar2(10) primary key, -- <img id="cat1"
+    x number(4) not null,
+    y number(4) not null
+);
+
+insert into tblCat values ('cat1', 0, 0);
+
+
+
+
+
+
+
+
 
 
 
