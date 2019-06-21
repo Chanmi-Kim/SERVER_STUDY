@@ -193,6 +193,7 @@ public class AjaxDAO {
 				dto.setCatid(rs.getString("catid"));
 				dto.setX(rs.getString("x"));
 				dto.setY(rs.getString("y"));
+				dto.setImg(rs.getString("img"));
 				list.add(dto);
 			}
 			
@@ -204,6 +205,174 @@ public class AjaxDAO {
 		}
 		
 		return null;
+	}
+	
+	//-------------------------------------
+
+	public void add(AnimalDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblData values (data_seq.nextval, ?, ?, default)";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, dto.getType());
+			stat.setString(2, dto.getData());
+			
+			stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("AjaxDAO.add : " + e.toString());
+		}
+		
+	}
+
+	public ArrayList<AnimalDTO> data(AnimalDTO dto) {
+		
+		try {
+			
+			String sql = "select * from tblData where type = ? order by seq desc";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, dto.getType());
+			
+			ArrayList<AnimalDTO> list = new ArrayList<AnimalDTO>();
+			rs = stat.executeQuery();
+			
+			while (rs.next()) {
+				AnimalDTO adto = new AnimalDTO();
+				adto.setSeq(rs.getString("seq"));
+				adto.setType(rs.getString("type"));
+				adto.setData(rs.getString("data"));
+				adto.setRegdate(rs.getString("regdate"));
+				list.add(adto);
+			}
+			
+			return list;			
+			
+		} catch (Exception e) {
+			
+			System.out.println("AjaxDAO.data : " + e.toString());
+		}
+		
+		return null;
+	}
+
+	public AnimalDTO getAnimal() {
+		
+		try {
+			
+			String sql = "select * from tblData where seq = (select max(seq) from tblData)";
+			
+			stat = conn.prepareStatement(sql);
+			rs = stat.executeQuery();
+			
+			AnimalDTO dto = new AnimalDTO();
+			
+			if (rs.next()) {
+				dto.setSeq(rs.getString("seq"));
+				dto.setType(rs.getString("type"));
+				dto.setData(rs.getString("data"));
+				dto.setRegdate(rs.getString("regdate"));
+			}
+			
+			return dto;//***			
+			
+		} catch (Exception e) {
+			
+			System.out.println("AjaxDAO.getAnimal : " + e.toString());
+		}
+		
+		return null;
+	}
+
+	public ArrayList<AnimalDTO> data() {
+		
+		AnimalDTO dto = new AnimalDTO();
+		dto.setType("text");
+		
+		return data(dto);
+	}
+
+	public void addCat(CatDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblCat values (?, ?, 0, 0)";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, dto.getCatid());
+			stat.setString(2, dto.getImg());
+			
+			stat.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			
+			System.out.println("AjaxDAO.addCat : " + e.toString());
+		}
+		
+	}
+
+	public int getMaxNo() {
+		
+		try {
+			
+			String sql = "select max(catid) as catid from tblCat";
+			
+			stat = conn.prepareStatement(sql);
+			rs = stat.executeQuery();
+			
+			if (rs.next()) {
+				return Integer.parseInt(rs.getString("catid").substring(3));
+			}
+			
+			
+		} catch (Exception e) {
+			
+			System.out.println("AjaxDAO.getMaxNo : " + e.toString());
+		}
+		
+		return 0;
+	}
+
+	public void editCat(CatDTO dto) {
+		
+		try {
+			
+			String sql = "update tblCat set x = ?, y = ? where catid = ?";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, dto.getX());
+			stat.setString(2, dto.getY());
+			stat.setString(3, dto.getCatid());
+			
+			stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("AjaxDAO.editCat : " + e.toString());
+		}
+		
+	}
+
+	public void delCat(String catid) {
+		
+		try {
+			
+			String sql = "delete from tblCat where catid = ?";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, catid);
+			
+			stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("AjaxDAO.editCat : " + e.toString());
+		}
+		
 	}
 	
 }
