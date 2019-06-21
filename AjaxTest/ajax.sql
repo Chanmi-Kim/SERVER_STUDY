@@ -70,6 +70,15 @@ insert into tblCat values ('cat1', 0, 0);
 
 
 
+--데이터 형태 테스트
+create table tblData (
+    seq number primary key, --PK
+    type varchar2(20) not null, --text, xml, json
+    data varchar2(100) not null, --더미
+    regdate date default sysdate not null
+);
+create sequence data_seq;
+
 
 
 
