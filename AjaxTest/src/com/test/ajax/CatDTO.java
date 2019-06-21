@@ -5,6 +5,7 @@ public class CatDTO {
 	private String catid;
 	private String x;
 	private String y;
+	private String img;
 	
 	public String getCatid() {
 		return catid;
@@ -23,6 +24,12 @@ public class CatDTO {
 	}
 	public void setY(String y) {
 		this.y = y;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 	
