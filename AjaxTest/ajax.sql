@@ -69,6 +69,19 @@ create table tblCat (
 insert into tblCat values ('cat1', 0, 0);
 
 
+create table tblCat2 (
+    catid varchar2(10) primary key, -- <img id="cat1"
+    x number(4) not null,
+    y number(4) not null
+);
+
+insert into tblCat2 values ('cat1', 0, 0);
+insert into tblCat2 values ('cat2', 0, 0);
+insert into tblCat2 values ('cat3', 0, 0);
+insert into tblCat2 values ('cat4', 0, 0);
+insert into tblCat2 values ('cat5', 0, 0);
+
+commit;
 
 --데이터 형태 테스트
 create table tblData (
@@ -82,12 +95,31 @@ create sequence data_seq;
 
 
 
+select * from tblCat;
 
+delete from tblCat;
 
+commit;
 
+drop table tblCat;
 
+create table tblCat (
+    catid varchar2(10) primary key, -- <img id="cat1"
+    img varchar2(20) not null, -- 'cat03.png'
+    x number(4) not null,
+    y number(4) not null
+);
 
+commit;
+delete from tblCat;
+select * from tblCat order by catid desc;
+select max(substr(catid, 4)+0) as catid from tblCat;
 
+cat2	catty04.png	0	0
+cat3	catty05.png	0	0
+cat4	catty05.png	0	0
+cat5	catty08.png	0	0
+cat1	catty13.png	0	0
 
 
 
