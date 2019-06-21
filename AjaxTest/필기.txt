@@ -117,13 +117,16 @@ Ajax 응답 페이지
 
 
 
+Ajax <-> (데이터) <-> 웹서버
+1. text
+2. xml
+3. json
 
+- Ex09.java + ex09.jsp
+- Ex09Text.java + ex09text.jsp
+- Ex09XML.java + ex09xml.jsp
+- Ex09JSON.java + ex09json.jsp
 
-	
-	
-	
-	
-	
-	
-	
-	
+- JSON
+- Ex10.java + ex10.jsp
+- Ex10Data.java + ex10data.jsp
