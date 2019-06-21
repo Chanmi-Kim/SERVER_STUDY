@@ -130,3 +130,11 @@ Ajax <-> (데이터) <-> 웹서버
 - JSON
 - Ex10.java + ex10.jsp
 - Ex10Data.java + ex10data.jsp
+
+
+
+문제
+- Ex11.java + ex11.jsp
+- Ex11Data.java
+- AjaxDAO.java + CatDTO.java
+- tblCat
