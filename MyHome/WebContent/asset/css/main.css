@@ -1,0 +1,145 @@
+/* main.css */
+
+#main {
+	border: 0px solid black;
+	width: 900px;
+	margin: 0px auto;
+}
+
+#top {
+	border: 0px solid red;
+	height: 100px;
+	border-bottom: 1px dashed #aaa;
+}
+
+#top > h1 {
+	text-align: right;
+	padding-right: 15px;
+}
+
+#top > ul {
+	list-style-type: none;
+	border: 0px solid red;
+	padding: 0px;
+	width: 360px;
+	margin: 0px 0px 0px auto;
+}
+
+#top > ul > li {
+	float: left;	
+	border: 0px solid red;
+	border-right: 1px solid #aaa;
+	text-align: center;
+	font-weight: bold;
+	padding: 0px 15px;
+}
+
+#top > ul > li:last-child {
+	border-right: 0px solid #aaa;
+}
+
+#top > ul > li > a {
+	color: #777;
+	text-decoration: none;
+	font-variant: small-caps;
+}
+
+#top > ul > li::first-letter { 
+	
+}
+
+#top > ul > li:hover::first-letter { 
+  color: tomato;
+}
+
+
+#detail {
+	border: 0px solid blue;
+	min-height: 400px;
+}
+
+
+.table.short {
+	width: 270px;
+	margin: 0px auto;
+}
+
+.table.long {
+	width: 800px;
+	margin: 0px auto;
+}
+
+.table > tbody > tr > th {
+	text-align: center;
+	vertical-align: middle;
+	background-color: #eee;
+}
+
+input.short {
+	width: 140px;
+}
+
+.btns.short {
+	border: 0px solid black;
+	width: 270px;
+	margin: 0px auto;
+	margin-top: 15px;
+	text-align: left;
+}
+
+.btns.long {
+	border: 0px solid black;
+	width: 800px;
+	margin: 0px auto;
+	margin-top: 15px;
+	text-align: left;
+}
+
+.sub.short {
+	border-top: 1px dashed #ccc;
+	padding-top: 10px;
+	width: 270px;
+	margin: 0px auto;
+	margin-top: 15px;
+	text-align: left;
+}
+
+.sub.long {
+	border-top: 1px dashed #ccc;
+	padding-top: 10px;
+	width: 800px;
+	margin: 0px auto;
+	margin-top: 15px;
+	text-align: left;
+}
+
+
+#detail h2 {
+	width: 800px;
+	margin: 40px auto 25px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
