@@ -1,0 +1,142 @@
+하는 행동 순서 적어놓기(History)
+
+1. 위치(패키지, 폴더)
+2. 파일명
+3. 업무 내용
+
+
+
+
+---------------------------------------
+
+
+
+
+1. 게시판
+2. 회원
+3. 부가 기능
+
+새 프로젝트 만들기
+- Dynamic Web Project > "MyHome" > web.xml 체크
+
+데이터베이스
+- MyHome > script.sql 만들기
+
+컨텍스트 루트 경로 변경하기
+- "MyHome" > "myhome"
+
+라이브러리 가져오기
+- WebContent > WEB-INF > lib
+	- jstl-1.2.jar //JSTL
+	- cos.jar //파일업로드
+	- ojdbc6.jar or ojdbc14.jar //오라클
+
+클라이언트 라이브러리 가져오기
+- jQuery + Bootstrap
+- WebContent > asset > css
+- WebContent > asset > js
+- WebContent > asset > fonts	
+- WebContent > asset > images	
+	
+업무 폴더 만들기
+- com.test.home //루트 패키지
+- com.test.home.member //회원 관련
+- com.test.home.board //게시판 관련
+- com.test.home.etc //기타 기능 관련
+
+- WebContent > inc //공통 페이지(조각 페이지)
+- WebContent > WEB-INF > views //뷰 루트
+- WebContent > WEB-INF > views > member //회원
+- WebContent > WEB-INF > views > board //게시판
+- WebContent > WEB-INF > views > etc //기타
+
+	
+기본 템플릿(레이아웃)
+- com.test.home > Template.java
+- views > template.jsp
+
+추가 파일 만들기
+- inc > asset.jsp
+- asset > css > main.css
+- asset > js > main.js
+
+- inc > header.jsp
+
+
+
+시작 페이지
+- com.test.home > Index.java
+- views > index.jsp
+
+회원 페이지 > 시작 페이지
+- com.test.home.member > Index.java
+- views > member > index.jsp
+
+회원 페이지 > 가입
+- com.test.home.member > Add.java
+- com.test.home.member > AddOk.java
+- views > member > add.jsp
+- views > member > addok.jsp
+
+- com.test.home > DBUtil.java //복사
+- com.test.home.member > MemberDAO.java
+- com.test.home.member > MemberDTO.java
+
+- WebContent > pic 폴더 만들기(프로필 사진 폴더)
+
+
+로그인
+- com.test.home.member > LoginOk.java
+- views > member > loginok.jsp
+
+로그 아웃
+- com.test.home.member > LogOut.java
+- views > member > logout.jsp
+
+회원 탈퇴하기
+- com.test.home.member > Del.java
+- views > member > del.jsp
+- com.test.home.member > DelOk.java
+- views > member > delok.jsp
+
+
+
+게시판
+- 비회원
+	- 글쓰기X
+	- 글수정X
+	- 글삭제X
+	- 글목록O
+	- 글보기O
+- 회원
+	- 모든 기능 사용 가능
+
+- 기능
+	a. 목록 보기
+	b. 상세 보기
+	c. 쓰기
+	d. 수정하기
+	e. 삭제하기
+	f. 검색하기
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
