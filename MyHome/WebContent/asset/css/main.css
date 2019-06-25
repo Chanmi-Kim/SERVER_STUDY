@@ -1,5 +1,11 @@
 /* main.css */
 
+body { margin-bottom: 200px; }
+
+body { overflow-y:scroll; }
+
+ 
+
 #main {
 	border: 0px solid black;
 	width: 900px;
@@ -75,7 +81,7 @@
 	background-color: #eee;
 }
 
-input.short {
+input.short, select.short {
 	width: 140px;
 }
 
@@ -126,8 +132,17 @@ input.short {
 }
 
 
+#detail textarea {
+	resize: none;
+}
 
+input, textarea, select, button {
+	outline: none !important;
+}
 
+#detail a {
+	text-decoration: none;
+}
 
 
 
