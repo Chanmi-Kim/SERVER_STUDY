@@ -10,11 +10,11 @@
 <style>
 	
 	#tblAdd th {
-		width: 100px;
+		width: 150px;
 	}
 	
 	#tblAdd td {
-		width: 700px;
+		width: 650px;
 	}
 	
 </style>
