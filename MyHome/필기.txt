@@ -119,7 +119,48 @@
 	e. 삭제하기
 	f. 검색하기
 	
-	
+- 목록 보기
+- com.test.home.board > List.java
+- views > board > list.jsp
+
+- 글쓰기
+- com.test.home.board > Add.java
+- views > board > add.jsp
+- com.test.home.board > AddOk.java
+- views > board > addok.jsp
+
+- 상세보기
+- com.test.home.board > View.java
+- views > board > view.jsp
+
+- 수정하기
+- com.test.home.board > Edit.java
+- views > board > edit.jsp
+- com.test.home.board > EditOk.java
+- views > board > editok.jsp
+
+
+- 삭제하기
+- com.test.home.board > Del.java
+- views > board > del.jsp
+- com.test.home.board > DelOk.java
+- views > board > delok.jsp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
