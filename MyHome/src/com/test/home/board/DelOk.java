@@ -9,11 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.test.home.AuthCheck;
+
 @WebServlet("/board/delok.do")
 public class DelOk extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		//인증 사용자?
+		AuthCheck auth = new AuthCheck(req.getSession(), resp);
+		auth.allow();
 
 		//DelOk.java
 		//1. 데이터 가져오기
