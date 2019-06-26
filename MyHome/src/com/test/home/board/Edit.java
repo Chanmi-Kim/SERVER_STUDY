@@ -9,11 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.test.home.AuthCheck;
+
 @WebServlet("/board/edit.do")
 public class Edit extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//인증 사용자?
+		AuthCheck auth = new AuthCheck(req.getSession(), resp);
+		auth.allow();
 
 		//Edit.java
 		//board/edit.do?seq=10
@@ -26,6 +32,8 @@ public class Edit extends HttpServlet {
 		
 		BoardDAO dao = new BoardDAO();
 		BoardDTO dto = dao.get(seq);
+		
+		auth.allow2(dto.getId());
 		
 		req.setAttribute("dto", dto);
 
