@@ -35,10 +35,72 @@ create sequence board_seq;
 
     
 select * from tblMember;
+select * from tblBoard;
 
 
 
 
+
+
+
+
+
+
+
+
+select seq, subject, id, (select name from tblMember where id = b.id) as name, regdate, readcount, round((sysdate - regdate) * 24 * 60) as gap from tblBoard b order by seq desc
+0.004490740740740740740740740740740740740741
+8
+
+
+
+
+
+select seq, subject, id, (select name from tblMember where id = b.id) as name
+    , regdate, readcount, round((sysdate - regdate) * 24 * 60) as gap 
+        from tblBoard b where content like '%테스트%' order by seq desc;
+
+select seq, subject, id, (select name from tblMember where id = b.id) as name
+    , regdate, readcount, round((sysdate - regdate) * 24 * 60) as gap 
+        from tblBoard b where name like '%길동%' order by seq desc;
+
+select * from vwBoard where name like '%길동%' order by seq desc;
+select * from vwBoard where content like '%테스트%' order by seq desc;
+
+select 절 --3
+from 절 -- 1
+where 절 --2
+
+
+
+create or replace view vwBoard
+as
+select seq, subject, id, (select name from tblMember where id = b.id) as name
+    , regdate, readcount, round((sysdate - regdate) * 24 * 60) as gap
+    , content
+        from tblBoard b;
+
+
+-- 검색어 수집 테이블
+create table tblSearch (   
+    seq number primary key, --PK
+    columnName varchar2(30) not null, --컬럼명
+    word varchar2(200) not null, --검색어
+    regdate date default sysdate not null, --검색시각
+    id varchar2(30) references tblMember(id) null --FK
+);
+create sequence search_seq;
+
+select * from tblSearch;
+
+-- 댓글 테이블
+create table tblComment (
+    seq number primary key, --댓글 번호(PK)
+    content varchar2(2000) not null, --댓글 내용
+    id varchar2(30) not null references tblMember(id), --댓글 작성자 id
+    regdate date default sysdate not null, --작성 시각
+    pseq number not null references tblBoard(seq) --부모글번호
+);
 
 
 
