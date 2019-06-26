@@ -12,12 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.test.home.AuthCheck;
 
 @WebServlet("/member/addok.do")
 public class AddOk extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//인증 사용자?
+		AuthCheck auth = new AuthCheck(req.getSession(), resp);
+		auth.allow();
 
 		//AddOk.java
 		//0. MultipartRequest 생성
@@ -54,6 +59,7 @@ public class AddOk extends HttpServlet {
 			File file = new File(req.getRealPath("/pic") + "\\" + pic);
 			//System.out.println(file.exists());
 			File file2 = new File(req.getRealPath("/pic") + "\\" + id + ".png");
+			
 			file.renameTo(file2);//사진을 아이디로 이름 바꾸기
 			
 			pic = id + ".png";
