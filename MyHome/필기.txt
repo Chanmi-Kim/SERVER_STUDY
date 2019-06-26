@@ -147,10 +147,15 @@
 - views > board > delok.jsp
 
 
+검색하기
+- List.java
+- list.jsp
+- com.test.home.board > SearchDTO.java
 
 
-
-
+댓글쓰기
+- com.test.home.board > AddComment.java
+- views > board > addcomment.jsp
 
 
 
