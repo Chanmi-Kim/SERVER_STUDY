@@ -1,6 +1,7 @@
 package com.test.home.board;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,9 +16,18 @@ public class View extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		//View.java
-		//board/view.do?seq=10
+		//board/view.do?seq=10&isSearch=false&column=&word= //평상 시
+		//board/view.do?seq=10&isSearch=true&column=content&word=단어 //검색
+
+		String isSearch = req.getParameter("isSearch");
+		String column = req.getParameter("column");
+		String word = req.getParameter("word");
+		
+		if (isSearch == null || isSearch == "") {
+			isSearch = "false";
+		}
 		
 		//1. 데이터 가져오기
 		//2. DB 작업 > DAO 위임(select where)
@@ -41,7 +51,7 @@ public class View extends HttpServlet {
 		
 		BoardDTO dto = dao.get(seq);
 		
-		dao.close();
+		//dao.close();
 		
 		//데이터 조작
 		
@@ -59,6 +69,26 @@ public class View extends HttpServlet {
 		content = content.replace("\r\n", "<br>");
 		dto.setContent(content);
 		
+		
+		//내용에서 검색중이면 검색어 강조
+		if (isSearch.equals("true") && column.equals("content")) {
+			content = content.replace(word, "<span style='background-color:gold;color:tomato;'>" + word + "</span>");
+			dto.setContent(content);
+		}
+		
+		
+		
+		
+		//현재 글에 달려있는 댓글 목록 가져오기
+		ArrayList<CommentDTO> clist = dao.listComment(seq);
+		
+		
+		
+		req.setAttribute("clist", clist);
+		
+		req.setAttribute("isSearch", isSearch);
+		req.setAttribute("column", column);
+		req.setAttribute("word", word);
 		
 		req.setAttribute("dto", dto);
 
