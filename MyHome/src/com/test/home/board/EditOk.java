@@ -10,11 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.test.home.AuthCheck;
+
 @WebServlet("/board/editok.do")
 public class EditOk extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//인증 사용자?
+		AuthCheck auth = new AuthCheck(req.getSession(), resp);
+		auth.allow();
+		
 
 		//EditOk.java
 		// == AddOk.java
