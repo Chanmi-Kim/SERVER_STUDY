@@ -13,6 +13,70 @@
 	#tblView td { width: 650px; }
 	#tblView #content { height: 300px; }
 	
+	#tblAddComment { width: 700px; margin-top: 30px; margin-bottom: 15px; }
+	#tblAddComment textarea { width: 600px; height: 100px; }
+	#tblAddComment input { height: 100px; }
+	
+	#tblListComment { width: 720px; margin-top: 15px; margin-bottom: 15px; }
+	#tblListComment td:nth-child(1) { width: 570px; }
+	#tblListComment td:nth-child(2) { 
+		width: 150px;
+		text-align: center; 
+	}
+	#tblListComment td:nth-child(2) div:nth-child(2) {
+		font-size: 12px;
+	}
+	
+	
+	
+	.pic {
+		float: left;
+		width: 100px;
+		height: 100px;
+		margin: 10px;
+		margin-top: 4px;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center center;
+	}
+	
+	#tblListComment td > div:nth-child(2) {
+		font-size: 20px;
+		color: #777;
+	}
+	
+	#tblListComment td > div:nth-child(2):before {
+		content: open-quote;
+		font-size: 2em;
+	}
+	
+	#tblListComment td > div:nth-child(2):after {
+		content: close-quote;
+		font-size: 2em;
+	}
+	
+	#tblListComment td {
+		position: relative;
+	}
+		
+	#tblListComment td > div:nth-child(3) {
+		position: absolute;
+		bottom: 5px;
+		right: 10px;
+		color: #999;
+	}
+	
+	#tblListComment td > div:nth-child(3) > span {
+		display: none;
+		cursor: pointer;
+		color: tomato;
+	}
+	
+	#tblListComment td:hover > div:nth-child(3) > span {
+		display: inline;
+	}
+	
+	
 </style>
 <script>
 
@@ -63,14 +127,64 @@
 			</table>
 			
 			<div class="btns long">
+			
+				<c:if test="${(not empty id && id == dto.id) || lv == 2}">
 				<input type="button" value="수정하기" class="btn btn-default"
 					onclick="location.href='/myhome/board/edit.do?seq=${dto.seq}';">
 				<input type="button" value="삭제하기" class="btn btn-default"
 					onclick="location.href='/myhome/board/del.do?seq=${dto.seq}';">
+				</c:if>
+					
 				<input type="button" value="돌아가기" class="btn btn-default"
-					onclick="location.href='/myhome/board/list.do';">
+					onclick="location.href='/myhome/board/list.do?column=${column}&word=${word}';">
 			</div>
 			
+			
+			<!-- 댓글 -->
+			<form method="POST" action="/myhome/board/addcomment.do">
+				<table id="tblAddComment" class="table table-bordered long">
+					<tr>
+						<td>
+							<textarea name="content" class="form-control" required></textarea>
+						</td>
+						<td>
+							<input type="submit" value="댓글 쓰기" class="btn btn-default">
+						</td>
+					</tr>
+				</table>
+				<!-- 부모글번호 -->
+				<input type="hidden" name="pseq" value="${dto.seq}">
+			</form>
+			
+			<%-- 
+			<table id="tblListComment" class="table table-bordered long">
+				<c:forEach items="${clist}" var="cdto">
+				<tr>
+					<td>${cdto.content} [e][d]</td>
+					<td>
+						<div>${cdto.name}(${cdto.id})</div>
+						<div>${cdto.regdate}</div>
+					</td>
+				</tr>
+				</c:forEach>
+			</table> 
+			--%>
+			
+			<table id="tblListComment" class="table table-bordered long">
+				<c:forEach items="${clist}" var="cdto">
+				<tr>
+					<td>
+						<div class="pic" style="background-image: url(/myhome/pic/${cdto.id}.png);"></div>
+						<div>${cdto.content}</div>
+						<div>
+							<span>[edit]</span>
+							<span>[delete]</span> 
+							${cdto.regdate} ${cdto.name}(${cdto.id})
+						</div>
+					</td>
+				</tr>
+				</c:forEach>
+			</table>
 			
 			
 		</section>
