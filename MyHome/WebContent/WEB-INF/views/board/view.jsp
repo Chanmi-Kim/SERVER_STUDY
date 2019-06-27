@@ -53,6 +53,9 @@
 	#tblListComment td > div:nth-child(2):after {
 		content: close-quote;
 		font-size: 2em;
+		/* transform: translate(0px, 25px);
+		display: inline-block;
+		margin-top: -15px; */
 	}
 	
 	#tblListComment td {
@@ -83,6 +86,31 @@
 	$(function() {
 		
 	});
+	
+	
+	//댓글 수정
+	function edit(span, seq) {
+		
+		var content = $(span).parent().prev().text();
+		//alert(content);
+		$("#tblAddComment textarea").val(content);
+		
+		$("#tblAddComment input[type=submit]").val("댓글 수정");
+		
+		$("#tblAddComment textarea").focus();
+		
+		
+		$("#cform").attr("action", "/myhome/board/editcomment.do");
+		$("#cform input[name=seq]").val(seq);
+		
+	}
+	
+	
+	function del(seq) {
+		if (confirm("댓글을 삭제하겠습니까?")) {
+			location.href = "/myhome/board/delcomment.do?pseq=${dto.seq}&seq=" + seq;
+		}
+	}
 	
 </script>
 </head>
@@ -141,7 +169,7 @@
 			
 			
 			<!-- 댓글 -->
-			<form method="POST" action="/myhome/board/addcomment.do">
+			<form id="cform" method="POST" action="/myhome/board/addcomment.do">
 				<table id="tblAddComment" class="table table-bordered long">
 					<tr>
 						<td>
@@ -154,6 +182,8 @@
 				</table>
 				<!-- 부모글번호 -->
 				<input type="hidden" name="pseq" value="${dto.seq}">
+				<!-- 수정 or 삭제 댓글번호 -->
+				<input type="hidden" name="seq">
 			</form>
 			
 			<%-- 
@@ -177,8 +207,14 @@
 						<div class="pic" style="background-image: url(/myhome/pic/${cdto.id}.png);"></div>
 						<div>${cdto.content}</div>
 						<div>
-							<span>[edit]</span>
-							<span>[delete]</span> 
+							
+							<c:if test="${(not empty id && id == cdto.id) || lv == 2}">
+								<!-- edit.do?seq=${dto.seq} -->
+								<span onclick="edit(this, ${cdto.seq});">[edit]</span>
+								<span onclick="del(${cdto.seq})">[delete]</span> 
+							</c:if>
+							
+							
 							${cdto.regdate} ${cdto.name}(${cdto.id})
 						</div>
 					</td>
