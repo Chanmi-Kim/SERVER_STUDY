@@ -78,7 +78,15 @@ as
 select seq, subject, id, (select name from tblMember where id = b.id) as name
     , regdate, readcount, round((sysdate - regdate) * 24 * 60) as gap
     , content
+    , (select count(*) from tblComment where pseq = b.seq) as commentcount
+    , notice
         from tblBoard b;
+
+select * from
+    (select rownum as rnum, a.* from
+        (select * from vwBoard where subject like '%아메리카노' order by seq desc) a)
+            where rnum between 1 and 10 ;
+
 
 
 -- 검색어 수집 테이블
@@ -101,20 +109,34 @@ create table tblComment (
     regdate date default sysdate not null, --작성 시각
     pseq number not null references tblBoard(seq) --부모글번호
 );
+create sequence comment_seq;
+
+
+
+select * from tblComment;
 
 
 
 
+-- 게시판 테이블 + 공지사항
+create table tblBoard (
+    seq number primary key, --글번호(PK)
+    id varchar2(50) not null references tblMember(id), --아이디(FK)
+    subject varchar2(500) not null, --제목
+    content varchar2(4000) not null, --내용
+    regdate date default sysdate not null, --시각
+    readcount number default 0 not null, --조회수
+    userip varchar2(15) not null, --접속 IP 주소
+    tag varchar2(1) not null check(tag in ('y', 'n')), --글내용에 HTML 태그 허용
+    notice varchar2(1) default 0 not null check(notice in ('1', '0')) --공지사항(1), 일반글(0)
+); 
+
+drop table tblBoard;
+drop table tblComment;
 
 
 
 
-
-
-
-
-
-
-
+select seq, notice from tblBoard order by seq desc;
 
 
