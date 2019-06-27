@@ -27,10 +27,19 @@
 	#search select, #search input { display: inline-block; }
 	#search #word { width: 300px; }
 	
+	#pagebar { text-align: center; }
+
+	
 </style>
 <script>
 
 	$(function() {
+		
+		$("#selPage").change(function() {
+			
+			location.href = "/myhome/board/list.do?page=" + $(this).val();
+			
+		});
 		
 	});
 	
@@ -46,9 +55,26 @@
 			
 			<c:if test="${isSearch}">
 			<div style="color: tomato; text-align: center; margin-bottom: 15px;">
-				검색한 결과가 총 ${list.size()}개 있습니다.
+				검색한 결과가 총 ${totalCount}개 있습니다.
 			</div>
 			</c:if>
+			
+			
+			
+			<!-- 페이지 이동 도구 -->
+			<%-- <div style="width: 850px; text-align: right; margin-bottom: 10px;">
+				<select id="selPage">
+					<c:forEach var="i" begin="1" end="${totalPage}" step="1">
+					<option value="${i}">${i}페이지</option>
+					</c:forEach>
+				</select>
+			</div>
+			<script>
+				$("#selPage").val(${nowPage});
+			</script>
+			
+			<input type="range" style="width: 800px; margin: 10px auto;"
+				min="1" max="${totalPage}" value="${nowPage}" onchange="location.href='/myhome/board/list.do?page=' + this.value;"> --%>
 			
 			<table id="tblList" class="table table-bordered long">
 				<tr>
@@ -58,9 +84,23 @@
 					<th>날짜</th>
 					<th>읽음</th>
 				</tr>
-				<c:forEach items="${list}" var="dto">
+				
+				<c:if test="${list.size() == 0}">
 				<tr>
-					<td>${dto.seq}</td>
+					<td colspan="5">등록된 게시물이 없습니다.</td>
+				</tr>
+				</c:if>
+				
+				<c:forEach items="${list}" var="dto">
+				<tr <c:if test="${dto.notice == 1}">style='background-color:#C8EBFA;'</c:if>>
+					<td>
+						<c:if test="${dto.notice == 0}">
+						${dto.seq}
+						</c:if>
+						<c:if test="${dto.notice == 1}">
+						공지
+						</c:if>
+					</td>
 					<td>
 					
 						<!--  
@@ -72,11 +112,22 @@
 						
 						http://211.63.89.31:8088/myhome/board/view.do?seq=1&isSearch=true&column=content&word=%EA%B2%8C%EC%8B%9C%ED%8C%90
 						-->
+						
+						<!-- 제목 -->
 						<a href="/myhome/board/view.do?seq=${dto.seq}&isSearch=${isSearch}&column=${column}&word=${word}">${dto.subject}</a>
 						
-						<c:if test="${dto.gap < 60}">
-						<span class="label label-danger" style="font-size: 10px;">new</span>
+						<!-- 댓글수 -->
+						<c:if test="${dto.commentcount > 0}">
+							<span class="badge" style="font-size: 10px;">${dto.commentcount}</span>
 						</c:if>
+						
+						<!-- 최신글 -->
+						<c:if test="${dto.gap < 60}">
+							<span class="label label-danger" style="font-size: 10px;">new</span>
+						</c:if>
+						
+						
+						
 					</td>
 					<td>${dto.name}(${dto.id})</td>
 					<td>${dto.regdate}</td>
@@ -104,6 +155,10 @@
 				$("#word").val("${word}");
 			</script>
 			</c:if>
+			
+			<div id="pagebar">
+				${pagebar}
+			</div>
 			
 			<div class="btns long">
 				<c:if test="${not empty id}">
