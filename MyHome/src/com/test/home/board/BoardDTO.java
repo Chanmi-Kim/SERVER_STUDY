@@ -13,6 +13,9 @@ public class BoardDTO {
 	
 	private String name; //글쓴이 이름
 	private int gap; //글쓴뒤 지난 시간(분)
+	private int commentcount; //댓글수
+	
+	private String notice; //공지사항
 	
 	
 	public String getSeq() {
@@ -74,6 +77,18 @@ public class BoardDTO {
 	}
 	public void setGap(int gap) {
 		this.gap = gap;
+	}
+	public int getCommentcount() {
+		return commentcount;
+	}
+	public void setCommentcount(int commentcount) {
+		this.commentcount = commentcount;
+	}
+	public String getNotice() {
+		return notice;
+	}
+	public void setNotice(String notice) {
+		this.notice = notice;
 	}
 	
 }
