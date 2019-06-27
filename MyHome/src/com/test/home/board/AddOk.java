@@ -31,6 +31,15 @@ public class AddOk extends HttpServlet {
 		String id = session.getAttribute("id").toString();
 		String userip = req.getRemoteAddr();
 		
+		//관리자 : 0 or 1
+		//일반 : null > 0
+		String notice = req.getParameter("notice");
+		
+		if (notice == null) notice = "0";
+		
+		
+		
+		
 		//2.
 		BoardDTO dto = new BoardDTO();
 		
@@ -39,6 +48,7 @@ public class AddOk extends HttpServlet {
 		dto.setTag(tag);
 		dto.setId(id);
 		dto.setUserip(userip);
+		dto.setNotice(notice);
 		
 		BoardDAO dao = new BoardDAO();
 		
