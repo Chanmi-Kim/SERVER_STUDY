@@ -32,6 +32,17 @@
 			
 			<form method="POST" action="/myhome/board/addok.do">
 			<table id="tblAdd" class="table table-bordered long">
+				<c:if test="${lv == 2}">
+				<tr>
+					<th>공지글</th>
+					<td>
+						<select name="notice" id="notice" class="form-control short">
+							<option value="0">일반글</option>
+							<option value="1">공지글</option>
+						</select>
+					</td>
+				</tr>
+				</c:if>
 				<tr>
 					<th>이름(아이디)</th>
 					<td>${name}(${id})</td>
