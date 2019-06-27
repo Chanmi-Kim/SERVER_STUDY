@@ -26,7 +26,7 @@ public class BoardDAO {
 		
 		try {
 			
-			String sql = "insert into tblBoard (seq, id, subject, content, regdate, readcount, userip, tag) values (board_seq.nextval, ?, ?, ?, default, default, ?, ?)";
+			String sql = "insert into tblBoard (seq, id, subject, content, regdate, readcount, userip, tag, notice) values (board_seq.nextval, ?, ?, ?, default, default, ?, ?, ?)";
 			
 			stat = conn.prepareStatement(sql);
 			
@@ -35,6 +35,7 @@ public class BoardDAO {
 			stat.setString(3, dto.getContent());
 			stat.setString(4, dto.getUserip());
 			stat.setString(5, dto.getTag());
+			stat.setString(6, dto.getNotice());
 			
 			return stat.executeUpdate();			
 			
@@ -53,12 +54,21 @@ public class BoardDAO {
 			String where = "";
 			
 			if (map.get("isSearch").equals("true")) {
-				where = String.format("where %s like '%%%s%%'"
+				where = String.format("and %s like '%%%s%%'"
 														, map.get("column")
 														, map.get("word"));
 			}
 			
-			String sql = String.format("select * from vwBoard %s order by seq desc", where);
+			//String sql = String.format("select * from vwBoard %s order by seq desc", where);
+			
+			//order by notice desc, seq desc
+			String sql = String.format("select 0, a.* from vwBoard a where notice = 1 union select * from " + 
+					"    (select rownum as rnum, a.* from " + 
+					"        (select * from vwBoard where notice = 0 %s order by seq desc) a) " + 
+					"            where rnum between %s and %s"
+																, where
+																, map.get("begin")
+																, map.get("end"));
 			
 			stat = conn.prepareStatement(sql);
 			
@@ -78,6 +88,9 @@ public class BoardDAO {
 				dto.setReadcount(rs.getInt("readcount"));
 				
 				dto.setGap(rs.getInt("gap"));//최신글
+				dto.setCommentcount(rs.getInt("commentcount"));//댓글수
+				
+				dto.setNotice(rs.getString("notice"));//공지글
 				
 				list.add(dto);				
 			}
@@ -269,6 +282,80 @@ public class BoardDAO {
 		}
 		
 		return null;
+	}
+
+	public int editComment(CommentDTO cdto) {
+		
+		try {
+			
+			String sql = "update tblComment set content = ? where seq = ?";
+			stat = conn.prepareStatement(sql);
+			
+			stat.setString(1, cdto.getContent());
+			stat.setString(2, cdto.getSeq());
+			
+			return stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.editComment : " + e.toString());
+		}
+		
+		return 0;
+	}
+
+	public int delComment(String seq) {
+		
+		try {
+			
+			String sql = "delete from tblComment where seq = ?";
+			stat = conn.prepareStatement(sql);
+			
+			stat.setString(1, seq);
+			
+			return stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.delComment : " + e.toString());
+		}
+		
+		return 0;
+	}
+
+	public int getTotalCount(HashMap<String, String> map) {
+		
+		try {
+			
+			String where = "";
+			
+			if (map.get("isSearch").equals("true")) {
+				where = String.format("where %s like '%%%s%%'"
+														, map.get("column")
+														, map.get("word"));
+			}
+			
+			
+			//getTotalCount()			
+			//String sql = String.format("select count(*) as cnt from tblBoard %s"
+			//												, where);
+			String sql = String.format("select count(*) as cnt from vwBoard %s"
+																	, where);
+															
+			stat = conn.prepareStatement(sql);
+			rs = stat.executeQuery();
+			
+			if (rs.next()) {
+				
+				return rs.getInt("cnt");
+			}		
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.getTotalCount : " + e.toString());
+		}
+		
+		return 0;
 	}
 	
 }
