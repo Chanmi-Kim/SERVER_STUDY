@@ -75,6 +75,47 @@ public class List extends HttpServlet {
 		
 		
 		
+		
+		//페이징 + 페이지바 관련 변수
+		int nowPage = 0;			//현재 페이지 번호
+		int totalCount = 0;		//총 게시물 
+		int pageSize = 10;		//한 페이지당 출력 게시물 수
+		int totalPage = 0;		//총 페이지
+		int begin = 0;				//where 절
+		int end = 0;					//where 절
+		int n = 0;						//페이지 바 제작
+		int loop = 0;					//페이지 바 제작
+		int blockSize = 10;		//페이지 바 제작
+		
+		
+		
+		//list.do > list.do?page=1
+		//list.do?page=3
+		
+		String page = req.getParameter("page");
+		
+		if (page == null || page == "") nowPage = 1;
+		else nowPage = Integer.parseInt(page);
+		
+		//nowPage : 현재 보게될 페이지 번호 + 연산
+		//1page -> where rnum between 1 and 10
+		//2page -> where rnum between 11 and 20
+		//3page -> where rnum between 21 and 30
+		begin = ((nowPage - 1) * pageSize) + 1;
+		end = begin + pageSize - 1;
+		
+		map.put("begin", begin + "");
+		map.put("end", end + "");
+		
+		
+		//총 게시물 수 알아내기
+		totalCount = dao.getTotalCount(map);
+		
+		//총 페이지 수 알아내기
+		//256 / 10 = 25.6 > 26
+		totalPage = (int)Math.ceil((double)totalCount / pageSize);
+	
+		
 
 		//List.java
 		//1. DB 작업 > DAO 위임(select)
@@ -144,10 +185,136 @@ public class List extends HttpServlet {
 		
 		
 		
+		
+		
+		
+		//페이지 바 제작
+		String pagebar = ""; //JSP 돌려줄 페이지 바 태그
+		
+		
+		
+//		for (int i=1; i<=totalPage; i++) {
+//			
+//			if (i == nowPage) {
+//				pagebar += String.format(" <a href='#' onclick='event.preventDefault();' style='color:tomato;'>%d</a> ", i);
+//			} else {
+//				pagebar += String.format(" <a href='/myhome/board/list.do?page=%d'>%d</a> ", i, i);
+//			}
+//			
+//		}
+		
+		//list.do?page=1
+		//1 2 3 4 5 6 7 8 9 10
+		
+		//list.do?page=5
+		//1 2 3 4 5 6 7 8 9 10
+		
+		//list.do?page=10
+		//1 2 3 4 5 6 7 8 9 10
+		
+		//list.do?page=12
+		//11 12 13 14 15 16 17 18 19 20
+		
+		
+		//list.do?page=10
+		//6 7 8 9 10 11 12 13 14 15
+		
+		loop = 1; //루프 변수(while)
+		n = ((nowPage - 1) / blockSize) * blockSize + 1;//페이지 번호
+		
+	
+		
+		
+		pagebar += "<nav>\r\n" + 
+				"  <ul class='pagination'>";
+		
+		
+		//이전 10페이지
+//		if (n == 1) {
+//			pagebar += String.format(" <a href='#' onclick='event.preventDefault();'>[이전 %d페이지]</a> ", blockSize);
+//		} else {
+//			pagebar += String.format(" <a href='/myhome/board/list.do?page=%d'>[이전 %d페이지]</a> ", n-1, blockSize);
+//		}
+		
+		if (n == 1) {
+			pagebar += String.format("<li>" + 
+					"      <a href='#' aria-label='Previous'>" + 
+					"        <span aria-hidden='true'>&laquo;</span>" + 
+					"      </a>" + 
+					"    </li>");
+		} else {
+			pagebar += String.format("<li>" + 
+					"      <a href='/myhome/board/list.do?page=%d' aria-label='Previous'>" + 
+					"        <span aria-hidden='true'>&laquo;</span>" + 
+					"      </a>" + 
+					"    </li>", n-1);
+		}
+		
+		
+		
+		//페이지 번호 루프
+//		while (!(loop > blockSize || n > totalPage)) {
+//			
+//			if (n == nowPage) {
+//				pagebar += String.format(" <a href='#' onclick='event.preventDefault();' style='color:tomato;'>%d</a> ", n);
+//			} else {
+//				pagebar += String.format(" <a href='/myhome/board/list.do?page=%d'>%d</a> ", n, n);
+//			}
+//			
+//			loop++;
+//			n++;
+//			
+//		}//while
+		
+		while (!(loop > blockSize || n > totalPage)) {
+			
+			if (n == nowPage) {
+				pagebar += String.format("<li class='active'><a href='#'>%d</a></li>", n);
+			} else {
+				pagebar += String.format("<li><a href='/myhome/board/list.do?page=%d'>%d</a></li>", n, n);
+			}
+			
+			loop++;
+			n++;
+			
+		}//while
+		
+		
+		//[다음 10페이지]
+//		if (n > totalPage) {
+//			pagebar += String.format(" <a href='#' onclick='event.preventDefault();'>[다음 %d페이지]</a> ", blockSize);
+//		} else {
+//			pagebar += String.format(" <a href='/myhome/board/list.do?page=%d'>[다음 %d페이지]</a> ", n, blockSize);
+//		}
+		
+		if (n > totalPage) {
+			pagebar += String.format("<li>" + 
+					"      <a href='#' aria-label='Next'>" + 
+					"        <span aria-hidden='true'>&raquo;</span>" + 
+					"      </a>" + 
+					"    </li>");
+		} else {
+			pagebar += String.format("<li>" + 
+					"      <a href='/myhome/board/list.do?page=%d' aria-label='Next'>" + 
+					"        <span aria-hidden='true'>&raquo;</span>" + 
+					"      </a>" + 
+					"    </li>", n);
+		}
+		
+		
+		pagebar += "</ul>\r\n" + 
+				"</nav>	";
+		
+		
+		
 		//View.java에서 F5에 의한 조회수 증가 방지 티켓 발급
 		session.setAttribute("isRead", "n");
+	
+		req.setAttribute("pagebar", pagebar);
 		
-		
+		req.setAttribute("totalCount", totalCount);
+		req.setAttribute("totalPage", totalPage);
+		req.setAttribute("nowPage", nowPage);
 		
 		req.setAttribute("isSearch", isSearch);
 		req.setAttribute("column", column);
