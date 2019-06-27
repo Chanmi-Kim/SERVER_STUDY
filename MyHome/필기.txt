@@ -157,12 +157,22 @@
 - com.test.home.board > AddComment.java
 - views > board > addcomment.jsp
 
+댓글수정
+- com.test.home.board > EditComment.java
+- views > board > editcomment.jsp
+
+댓글삭제
+- com.test.home.board > DelComment.java
+- views > board > delcomment.jsp
 
 
 
 
-
-
+페이징, Paging
+- 데이터베이스의 종류에 따라 구현 기법이 달라짐
+	1. 오라클 : rownum 사용
+	2. MS-SQL : top 5 키워드 사용
+	3. MySQL(MariaDB, PostgreSQL) : limit 0, 5
 
 
 
