@@ -113,8 +113,18 @@
 						http://211.63.89.31:8088/myhome/board/view.do?seq=1&isSearch=true&column=content&word=%EA%B2%8C%EC%8B%9C%ED%8C%90
 						-->
 						
+						<!-- 답변글 들여쓰기 -->
+						<c:if test="${dto.depth > 0}">
+						<span class="glyphicon glyphicon-share-alt" style="margin-left: ${dto.depth * 30}px; color: cornflowerblue;"></span>
+						</c:if>
+						
 						<!-- 제목 -->
 						<a href="/myhome/board/view.do?seq=${dto.seq}&isSearch=${isSearch}&column=${column}&word=${word}">${dto.subject}</a>
+						
+						<!-- 첨부파일 표시 -->
+						<c:if test="${not empty dto.filename}">
+						<span class="glyphicon glyphicon-floppy-disk" style="color: cornflowerblue;"></span>
+						</c:if>
 						
 						<!-- 댓글수 -->
 						<c:if test="${dto.commentcount > 0}">
