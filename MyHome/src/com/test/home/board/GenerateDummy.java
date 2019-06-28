@@ -26,7 +26,7 @@ public class GenerateDummy {
 			
 			Random rnd = new Random();
 			Calendar c = Calendar.getInstance();
-			c.set(Calendar.DATE, -234);
+			c.set(Calendar.DATE, -204);
 			
 			for (int i=0; i<234; i++) {
 				
