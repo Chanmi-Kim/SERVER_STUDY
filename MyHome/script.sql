@@ -193,8 +193,8 @@ create table tblBoard (
 
 select * from tblBoard;
 
-
-
+delete from tblBoard;
+commit;
 
 
 
