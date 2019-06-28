@@ -13,6 +13,8 @@
 	#tblAdd td { width: 650px; }
 	#tblAdd #content { height: 300px; }
 	
+	
+	
 </style>
 <script>
 
@@ -26,6 +28,15 @@
 		
 	});
 	
+	function deletefile() {
+		
+		$(event.srcElement).parent().css("text-decoration", "line-through");
+
+		$("input[name=filename]").val("");
+		$("input[name=orgfilename]").val("");
+		$("input[name=isdelete]").val("${dto.filename}");
+	}
+	
 </script>
 </head>
 <body>
@@ -36,7 +47,8 @@
 			
 			<h2>Board</h2>
 			
-			<form method="POST" action="/myhome/board/editok.do">
+			<form method="POST" action="/myhome/board/editok.do"
+				enctype="multipart/form-data">
 			<table id="tblAdd" class="table table-bordered long">
 				<tr>
 					<th>이름(아이디)</th>
@@ -62,6 +74,30 @@
 						</script>
 					</td>
 				</tr>
+				<tr>
+					<th>파일</th>
+					<td>
+					
+						<!--  
+						<input type="password">
+						<input type="file">
+						: value를 지정하지 못하거나 하지 않는 컨트롤
+						-->
+						<input type="file" name="attach" id="attach" class="form-control">
+						
+						<c:if test="${not empty dto.filename}">
+						<div style="margin-top:10px;">
+							첨부파일 : ${dto.orgfilename} 
+							<span onclick="deletefile();" style="cursor:pointer">[delete]</span>
+						</div>
+						</c:if>
+					
+						<c:if test="${empty dto.filename}">
+						<div style="margin-top:10px;">첨부파일없음</div>
+						</c:if>
+					
+					</td>
+				</tr>
 			</table>
 			
 			<div class="btns long">
@@ -70,7 +106,11 @@
 					onclick="location.href='/myhome/board/list.do';">
 			</div>
 			
+			
 			<input type="hidden" name="seq" value="${dto.seq}">
+			<input type="hidden" name="filename" value="${dto.filename}">
+			<input type="hidden" name="orgfilename" value="${dto.orgfilename}">
+			<input type="hidden" name="isdelete">
 			</form>
 			
 		</section>
