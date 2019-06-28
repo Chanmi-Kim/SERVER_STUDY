@@ -1,4 +1,4 @@
-package com.test.home.board;
+﻿package com.test.home.board;
 
 import java.io.IOException;
 
@@ -20,13 +20,22 @@ public class Add extends HttpServlet {
 		//인증 사용자?
 		AuthCheck auth = new AuthCheck(req.getSession(), resp);
 		auth.allow();
-
+		
+		
 		
 		//Add.java
+		req.setAttribute("thread", req.getParameter("thread"));
+		req.setAttribute("depth", req.getParameter("depth"));
+		req.setAttribute("reply", req.getParameter("reply"));
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/add.jsp");
 		dispatcher.forward(req, resp);
 	}
 
 }
+
+
+
+
+
 
