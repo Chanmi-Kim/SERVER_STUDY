@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -30,7 +30,8 @@
 			
 			<h2>Board</h2>
 			
-			<form method="POST" action="/myhome/board/addok.do">
+			<form method="POST" action="/myhome/board/addok.do"
+				enctype="multipart/form-data">
 			<table id="tblAdd" class="table table-bordered long">
 				<c:if test="${lv == 2}">
 				<tr>
@@ -64,6 +65,10 @@
 						</select>
 					</td>
 				</tr>
+				<tr>
+					<th>파일</th>
+					<td><input type="file" name="attach" id="attach" class="form-control"></td>
+				</tr>
 			</table>
 			
 			<div class="btns long">
@@ -71,6 +76,13 @@
 				<input type="button" value="돌아가기" class="btn btn-default"
 					onclick="location.href='/myhome/board/list.do';">
 			</div>
+			
+			
+			<c:if test="${not empty reply}">
+			<input type="hidden" name="thread" value="${thread}">
+			<input type="hidden" name="depth" value="${depth}">
+			<input type="hidden" name="reply" value="${reply}">
+			</c:if> 
 			
 			</form>
 			
