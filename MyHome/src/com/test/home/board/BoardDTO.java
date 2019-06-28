@@ -17,7 +17,44 @@ public class BoardDTO {
 	
 	private String notice; //공지사항
 	
+	private String filename; //첨부 파일
+	private String orgfilename;
+	private String downloadcount;
 	
+	private int thread; //답변형 게시판
+	private int depth;
+	
+	
+	public int getThread() {
+		return thread;
+	}
+	public void setThread(int thread) {
+		this.thread = thread;
+	}
+	public int getDepth() {
+		return depth;
+	}
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public String getOrgfilename() {
+		return orgfilename;
+	}
+	public void setOrgfilename(String orgfilename) {
+		this.orgfilename = orgfilename;
+	}
+	public String getDownloadcount() {
+		return downloadcount;
+	}
+	public void setDownloadcount(String downloadcount) {
+		this.downloadcount = downloadcount;
+	}
 	public String getSeq() {
 		return seq;
 	}
