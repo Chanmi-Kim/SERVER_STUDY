@@ -80,6 +80,9 @@ select seq, subject, id, (select name from tblMember where id = b.id) as name
     , content
     , (select count(*) from tblComment where pseq = b.seq) as commentcount
     , notice
+    , filename
+    , thread
+    , depth
         from tblBoard b;
 
 select * from
@@ -138,5 +141,61 @@ drop table tblComment;
 
 
 select seq, notice from tblBoard order by seq desc;
+
+
+
+
+
+select 0, a.* from vwBoard a where notice = 1 union
+기존 sQL;
+
+
+
+-- 게시판 테이블 + 첨부 파일
+create table tblBoard (
+    seq number primary key, --글번호(PK)
+    id varchar2(50) not null references tblMember(id), --아이디(FK)
+    subject varchar2(500) not null, --제목
+    content varchar2(4000) not null, --내용
+    regdate date default sysdate not null, --시각
+    readcount number default 0 not null, --조회수
+    userip varchar2(15) not null, --접속 IP 주소
+    tag varchar2(1) not null check(tag in ('y', 'n')), --글내용에 HTML 태그 허용
+    notice varchar2(1) default 0 not null check(notice in ('1', '0')), --공지사항(1), 일반글(0)
+    filename varchar2(100) null, --첨부파일명(저장될 물리명)
+    orgfilename varchar2(100) null, --첨부파일명(사용자 올린 파일명)
+    downloadcount number default 0 null --다운로드 횟수
+); 
+
+drop table tblComment;
+drop table tblBoard;
+
+select * from tblBoard;
+    
+
+-- 게시판 테이블 + 답변쓰기
+create table tblBoard (
+    seq number primary key, --글번호(PK)
+    id varchar2(50) not null references tblMember(id), --아이디(FK)
+    subject varchar2(500) not null, --제목
+    content varchar2(4000) not null, --내용
+    regdate date default sysdate not null, --시각
+    readcount number default 0 not null, --조회수
+    userip varchar2(15) not null, --접속 IP 주소
+    tag varchar2(1) not null check(tag in ('y', 'n')), --글내용에 HTML 태그 허용
+    notice varchar2(1) default 0 not null check(notice in ('1', '0')), --공지사항(1), 일반글(0)
+    filename varchar2(100) null, --첨부파일명(저장될 물리명)
+    orgfilename varchar2(100) null, --첨부파일명(사용자 올린 파일명)
+    downloadcount number default 0 null, --다운로드 횟수
+    thread number not null, --정렬 기준
+    depth number not null --출력(들여쓰기)
+); 
+
+select * from tblBoard;
+
+
+
+
+
 
 
