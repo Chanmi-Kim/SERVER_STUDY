@@ -152,9 +152,26 @@
 					<th>읽음</th>
 					<td>${dto.readcount}회</td>
 				</tr>
+				<tr>
+					<th>파일</th>
+					<td>
+					
+					<c:if test="${not empty dto.filename}">
+					<a href="/myhome/board/download.do?filename=${dto.filename}&orgfilename=${dto.orgfilename}&seq=${dto.seq}">${dto.orgfilename}</a> (downloads : ${dto.downloadcount})
+					</c:if>
+					
+					<c:if test="${empty dto.filename}">
+					첨부 파일 없음
+					</c:if>
+					
+					</td>
+				</tr>
 			</table>
 			
 			<div class="btns long">
+				
+				<input type="button" value="답변하기" class="btn btn-default"
+					onclick="location.href='/myhome/board/add.do?reply=1&thread=${dto.thread}&depth=${dto.depth}';">
 			
 				<c:if test="${(not empty id && id == dto.id) || lv == 2}">
 				<input type="button" value="수정하기" class="btn btn-default"
