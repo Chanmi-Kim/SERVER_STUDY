@@ -26,7 +26,7 @@ public class BoardDAO {
 		
 		try {
 			
-			String sql = "insert into tblBoard (seq, id, subject, content, regdate, readcount, userip, tag, notice) values (board_seq.nextval, ?, ?, ?, default, default, ?, ?, ?)";
+			String sql = "insert into tblBoard (seq, id, subject, content, regdate, readcount, userip, tag, notice, filename, orgfilename, downloadcount, thread, depth) values (board_seq.nextval, ?, ?, ?, default, default, ?, ?, ?, ?, ?, default, ?, ?)";
 			
 			stat = conn.prepareStatement(sql);
 			
@@ -36,6 +36,10 @@ public class BoardDAO {
 			stat.setString(4, dto.getUserip());
 			stat.setString(5, dto.getTag());
 			stat.setString(6, dto.getNotice());
+			stat.setString(7, dto.getFilename());
+			stat.setString(8, dto.getOrgfilename());
+			stat.setInt(9, dto.getThread());
+			stat.setInt(10, dto.getDepth());
 			
 			return stat.executeUpdate();			
 			
@@ -64,7 +68,7 @@ public class BoardDAO {
 			//order by notice desc, seq desc
 			String sql = String.format("select 0, a.* from vwBoard a where notice = 1 union select * from " + 
 					"    (select rownum as rnum, a.* from " + 
-					"        (select * from vwBoard where notice = 0 %s order by seq desc) a) " + 
+					"        (select * from vwBoard where notice = 0 %s order by thread desc) a) " + 
 					"            where rnum between %s and %s"
 																, where
 																, map.get("begin")
@@ -91,6 +95,10 @@ public class BoardDAO {
 				dto.setCommentcount(rs.getInt("commentcount"));//댓글수
 				
 				dto.setNotice(rs.getString("notice"));//공지글
+				
+				dto.setFilename(rs.getString("filename"));//파일명
+				
+				dto.setDepth(rs.getInt("depth")); //답변형
 				
 				list.add(dto);				
 			}
@@ -130,6 +138,13 @@ public class BoardDAO {
 				dto.setUserip(rs.getString("userip"));
 				dto.setTag(rs.getString("tag"));
 				dto.setName(rs.getString("name"));//*
+				
+				dto.setFilename(rs.getString("filename"));
+				dto.setOrgfilename(rs.getString("orgfilename"));
+				dto.setDownloadcount(rs.getString("downloadcount"));
+				
+				dto.setThread(rs.getInt("thread"));//답변형
+				dto.setDepth(rs.getInt("depth"));
 				
 				return dto;
 			}
@@ -171,12 +186,16 @@ public class BoardDAO {
 		
 		try {
 			
-			String sql = "update tblBoard set subject = ?, content = ?, tag = ? where seq = ?";
+			String sql = "update tblBoard set subject = ?, content = ?, tag = ?, filename = ?, orgfilename = ? where seq = ?";
+			
 			stat = conn.prepareStatement(sql);
+			
 			stat.setString(1, dto.getSubject());
 			stat.setString(2, dto.getContent());
 			stat.setString(3, dto.getTag());
-			stat.setString(4, dto.getSeq());
+			stat.setString(4, dto.getFilename());
+			stat.setString(5, dto.getOrgfilename());
+			stat.setString(6, dto.getSeq());
 			
 			return stat.executeUpdate();
 			
@@ -356,6 +375,84 @@ public class BoardDAO {
 		}
 		
 		return 0;
+	}
+
+	public void updateDownloadCount(String seq) {
+		
+		try {
+			
+			String sql = "update tblBoard set downloadcount = downloadcount + 1 where seq = ?";
+
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, seq);
+			stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.updateDownloadCount : " + e.toString());
+		}
+		
+	}
+
+	public int delAllComment(String seq) {
+		
+		try {
+			
+			String sql = "delete from tblComment where pseq = ?";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, seq);
+			
+			int result = stat.executeUpdate();
+			
+			return result >= 1 ? 1 : 0;			
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.delAllComment : " + e.toString());
+		}
+		
+		return 0;
+	}
+
+	public int getMaxThread() {
+		
+		try {
+			
+			String sql = "select nvl(max(thread), 0) + 1000 as thread from tblBoard";
+			
+			stat = conn.prepareStatement(sql);
+			rs = stat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getInt("thread");
+			}
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.getMaxThread : " + e.toString());
+		}
+		
+		return 0;
+	}
+
+	public void updateThread(int parentThread, int previousThread) {
+		
+		try {
+			
+			String sql = "update tblBoard set thread = thread - 1 where thread > ? and thread < ?";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setInt(1, previousThread);
+			stat.setInt(2, parentThread);
+			
+			stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.updateThread : " + e.toString());
+		}
+		
 	}
 	
 }
