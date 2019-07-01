@@ -200,9 +200,23 @@
 
 
 
+해시 태그
+- tblHash(=tblComment)
+- 선택 입력
+- 다중 입력
+- 공백 사용 불가
+- 영대소문자 입력 가능, 검색 무시
 
 
 
+
+
+차트 페이지
+- com.test.home.etc > Chart.java
+- views > etc > chart.jsp
+
+- com.test.home.etc > EtcDAO.java
+- com.test.home.etc > ChartDTO.java
 
 
 
