@@ -166,6 +166,15 @@
 					
 					</td>
 				</tr>
+				<tr>
+					<th>해시 태그</th>
+					<td>
+						<c:forEach items="${hlist}" var="tag">
+						<!-- /list.do?tag=맛집 -->
+						<span style="cursor:pointer;margin-right:7px;" onclick="location.href='/myhome/board/list.do?tag=${tag}';"><span class="glyphicon glyphicon-tag" style="font-size: 12px; color: #777;"></span> ${tag}</span>
+						</c:forEach>
+					</td>
+				</tr>
 			</table>
 			
 			<div class="btns long">
