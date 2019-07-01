@@ -198,4 +198,96 @@ commit;
 
 
 
+-- 해시 태그 테이블
+create table tblHash (
+    seq number primary key,
+    tag varchar2(100) not null
+    --pseq number not null references tblBoard(seq)
+);
 
+-- 게시판 & 해시 사용 테이블
+create table tblHashBoard (
+    seq number primary key,
+    pseq number not null references tblBoard(seq),
+    hseq number not null references tblHash(seq)
+);
+
+create sequence hash_seq;
+create sequence hashboard_seq;
+
+select * from tblHash;
+select * from tblHashBoard;
+select * from tblBoard;
+
+select h.tag from tblBoard b
+    inner join tblHashBoard hb
+        on b.seq = hb.pseq
+            inner join tblHash h
+                on h.seq = hb.hseq
+                    where b.seq = 1821;
+
+
+select * from vwBoard
+    where seq in (select pseq from tblHashBoard 
+                                    where hseq = (select seq from tblHash where tag = '맛집'));
+
+
+
+
+select * from tblInsa;
+
+-- 전체 직원 > 부서별
+-- x : 입사월
+-- y : 사원수
+
+create or replace view vwChart
+as
+select to_char(ibsadate, 'mm') as mon, count(*) as cnt
+    from tblInsa 
+        group by to_char(ibsadate, 'mm')
+            order by to_char(ibsadate, 'mm');
+
+
+
+
+
+
+create table tblMonth (
+    mon varchar2(2) not null primary key
+);
+insert into tblMonth values ('01');
+insert into tblMonth values ('02');
+insert into tblMonth values ('03');
+insert into tblMonth values ('04');
+insert into tblMonth values ('05');
+insert into tblMonth values ('06');
+insert into tblMonth values ('07');
+insert into tblMonth values ('08');
+insert into tblMonth values ('09');
+insert into tblMonth values ('10');
+insert into tblMonth values ('11');
+insert into tblMonth values ('12');
+
+
+
+select to_char(i.ibsadate, 'mm') as mon, count(*) as cnt
+    from (select * from tblInsa where buseo = '홍보부') i
+        right outer join tblMonth m
+            on to_char(i.ibsadate, 'mm') = m.mon
+                    group by to_char(i.ibsadate, 'mm')
+                        order by m.mon;
+
+
+select m.mon, count(num) as cnt, buseo
+    from (select * from tblInsa where buseo = '홍보부') i
+        right outer join tblMonth m
+            on to_char(i.ibsadate, 'mm') = m.mon
+                group by m.mon, i.buseo
+                    order by m.mon asc;
+
+select m.mon, count(num) as cnt, nvl(buseo, '홍보부')
+    from (select * from tblInsa where buseo = '홍보부') i
+        right outer join tblMonth m
+            on to_char(i.ibsadate, 'mm') = m.mon
+                group by m.mon, i.buseo
+                    order by m.mon asc;
