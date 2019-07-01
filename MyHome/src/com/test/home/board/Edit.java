@@ -1,6 +1,7 @@
 package com.test.home.board;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,7 +36,15 @@ public class Edit extends HttpServlet {
 		
 		auth.allow2(dto.getId());
 		
+		
+		
+		//해시 태그 목록 가져오기
+		ArrayList<String> hlist = dao.listHash(seq);
+		
+		
+		
 		req.setAttribute("dto", dto);
+		req.setAttribute("hlist", hlist);
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/board/edit.jsp");
 		dispatcher.forward(req, resp);
