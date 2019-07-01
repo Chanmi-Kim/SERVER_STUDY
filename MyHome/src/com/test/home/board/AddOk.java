@@ -57,6 +57,8 @@ public class AddOk extends HttpServlet {
 		int parentThread = -1;
 		int parentDepth = -1;
 		
+		String hash = "";//해시태그
+		
 		try {
 			
 			System.out.println(req.getRealPath("/files"));
@@ -88,6 +90,8 @@ public class AddOk extends HttpServlet {
 			
 			filename = multi.getFilesystemName("attach");
 			orgfilename = multi.getOriginalFileName("attach");
+			
+			hash = multi.getParameter("hash");
 			
 			
 		} catch (Exception e) {
@@ -148,6 +152,41 @@ public class AddOk extends HttpServlet {
 		
 		
 		int result = dao.add(dto);
+		
+		//방금 쓴 게시물 번호
+		String seq = dao.getSeq();
+		
+		
+		
+		
+		//해시 태그 처리
+		// - 예제
+		// - JSP, Servlet, 수업 예제
+		if (hash != null && !hash.equals("")) {
+			
+			//공백 제거
+			hash = hash.replace(" ", "");
+			
+			//쪼개기
+			String[] htemp = hash.split(",");
+			
+			for (String hitem : htemp) {
+				
+				dao.addHash(hitem);
+				
+				String hseq = dao.getHseq(hitem);
+				
+				//JSP > 25, 1
+				//Servlet > 25, 5
+				//수업 예제 > 25, 7
+				dao.addHashBoard(seq, hseq);
+				
+			}
+			
+		}
+		
+		
+		
 		
 		req.setAttribute("result", result);		
 
