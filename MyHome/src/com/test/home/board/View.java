@@ -82,9 +82,13 @@ public class View extends HttpServlet {
 		//현재 글에 달려있는 댓글 목록 가져오기
 		ArrayList<CommentDTO> clist = dao.listComment(seq);
 		
+		//현재 글에 달려있는 해시 태그 목록 가져오기
+		ArrayList<String> hlist = dao.listHash(seq);
 		
 		
+
 		req.setAttribute("clist", clist);
+		req.setAttribute("hlist", hlist);
 		
 		req.setAttribute("isSearch", isSearch);
 		req.setAttribute("column", column);
