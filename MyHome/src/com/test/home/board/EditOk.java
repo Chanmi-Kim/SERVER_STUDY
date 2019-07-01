@@ -55,6 +55,8 @@ public class EditOk extends HttpServlet {
 		String orgfilename = "";
 		String seq = "";
 		
+		String hash = "";
+		
 		try {
 			
 			System.out.println(req.getRealPath("/files"));
@@ -73,6 +75,8 @@ public class EditOk extends HttpServlet {
 			content = multi.getParameter("content");
 			tag = multi.getParameter("tag");
 			seq = multi.getParameter("seq");
+			
+			hash = multi.getParameter("hash");
 			
 			filename = multi.getFilesystemName("attach"); //새로운 파일명ㄹ
 			orgfilename = multi.getOriginalFileName("attach");
@@ -120,6 +124,37 @@ public class EditOk extends HttpServlet {
 		BoardDAO dao = new BoardDAO();
 		
 		int result = dao.edit(dto);
+		
+		
+		//기존에 있던 태그 삭제
+		dao.delHash(seq);
+		
+		
+		//해시 태그 처리
+		if (hash != null && !hash.equals("")) {
+			
+			//공백 제거
+			hash = hash.replace(" ", "");
+			
+			//쪼개기
+			String[] htemp = hash.split(",");
+			
+			for (String hitem : htemp) {
+				
+				dao.addHash(hitem);
+				
+				String hseq = dao.getHseq(hitem);
+				
+				//JSP > 25, 1
+				//Servlet > 25, 5
+				//수업 예제 > 25, 7
+				dao.addHashBoard(seq, hseq);
+				
+			}
+			
+		}
+		
+		
 		
 		req.setAttribute("result", result);
 		req.setAttribute("seq", seq);
