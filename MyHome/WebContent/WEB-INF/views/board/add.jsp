@@ -69,6 +69,10 @@
 					<th>파일</th>
 					<td><input type="file" name="attach" id="attach" class="form-control"></td>
 				</tr>
+				<tr>
+					<th>해시 태그</th>
+					<td><input type="text" name="hash" id="hash" class="form-control"></td>
+				</tr>
 			</table>
 			
 			<div class="btns long">
