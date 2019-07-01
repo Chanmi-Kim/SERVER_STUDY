@@ -116,6 +116,17 @@ public class List extends HttpServlet {
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 	
 		
+		
+		
+		
+		//해시 태그를 눌렀다면
+		String tag = req.getParameter("tag");
+		
+		if (tag != null && !tag.equals("")) {
+			map.put("tag", tag);
+		}
+		
+		
 
 		//List.java
 		//1. DB 작업 > DAO 위임(select)
