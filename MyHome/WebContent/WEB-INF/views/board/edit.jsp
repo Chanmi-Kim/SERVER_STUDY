@@ -98,7 +98,18 @@
 					
 					</td>
 				</tr>
+				<tr>
+					<th>해시 태그</th>
+					<td><input type="text" name="hash" id="hash" class="form-control"></td>
+				</tr>
 			</table>
+			<script>
+				var tags = [];
+				<c:forEach items="${hlist}" var="tag">
+				tags.push("${tag}");
+				</c:forEach>
+				$("#hash").val(tags.toString());
+			</script>
 			
 			<div class="btns long">
 				<input type="submit" value="수정하기" class="btn btn-default">
