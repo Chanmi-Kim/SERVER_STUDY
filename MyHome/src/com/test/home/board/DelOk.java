@@ -47,6 +47,11 @@ public class DelOk extends HttpServlet {
 			file.delete();
 		}
 		
+		
+		//해시 태그 삭제
+		dao.delHash(seq);
+		
+		
 		//글 삭제
 		int result = dao.del(seq);
 		
