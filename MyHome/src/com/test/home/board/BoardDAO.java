@@ -63,16 +63,27 @@ public class BoardDAO {
 														, map.get("word"));
 			}
 			
+			
+			String tag = "";
+			
+			if (map.containsKey("tag")) {
+				tag = String.format(" and seq in (select pseq from tblHashBoard " + 
+							"  where hseq = (select seq from tblHash where tag = '%s'))"
+															, map.get("tag"));
+			}
+			
+			
 			//String sql = String.format("select * from vwBoard %s order by seq desc", where);
 			
 			//order by notice desc, seq desc
 			String sql = String.format("select 0, a.* from vwBoard a where notice = 1 union select * from " + 
 					"    (select rownum as rnum, a.* from " + 
 					"        (select * from vwBoard where notice = 0 %s order by thread desc) a) " + 
-					"            where rnum between %s and %s"
+					"            where rnum between %s and %s %s"
 																, where
 																, map.get("begin")
-																, map.get("end"));
+																, map.get("end")
+																, tag);
 			
 			stat = conn.prepareStatement(sql);
 			
@@ -451,6 +462,150 @@ public class BoardDAO {
 		} catch (Exception e) {
 			
 			System.out.println("BoardDAO.updateThread : " + e.toString());
+		}
+		
+	}
+
+	public void addHash(String hitem) {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from tblHash where tag = ?";
+			stat = conn.prepareStatement(sql);	
+			stat.setString(1, hitem);
+			rs = stat.executeQuery();
+			
+			if (rs.next()) {
+				if (rs.getInt("cnt") == 0) {
+					//처음 본다. > insert
+					rs.close();
+					stat.close();
+					
+					sql = "insert into tblHash (seq, tag) values (hash_seq.nextval, ?)";
+					stat = conn.prepareStatement(sql);
+					stat.setString(1, hitem);
+					
+					stat.executeUpdate();
+					
+				} else {
+					//이미 있다. > 아무 것도 안함
+				}
+			}
+			
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.addHash : " + e.toString());
+		}
+		
+	}
+
+	public String getSeq() {
+		
+		try {
+			
+			String sql = "select max(seq) as seq from tblBoard";
+			
+			stat = conn.prepareStatement(sql);
+			rs = stat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("seq");
+			}
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.getSeq : " + e.toString());
+		}
+		
+		return null;
+	}
+
+	public String getHseq(String hitem) {
+		
+		try {
+			
+			String sql = "select seq from tblHash where tag = ?";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, hitem);
+			rs = stat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("seq");
+			}
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.getSeq : " + e.toString());
+		}
+		
+		return null;
+	}
+
+	public void addHashBoard(String seq, String hseq) {
+		
+		try {
+			
+			String sql = "insert into tblHashBoard (seq, pseq, hseq) values (hashboard_seq.nextval, ?, ?)";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, seq);
+			stat.setString(2, hseq);
+			
+			stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.addHashBoard : " + e.toString());
+		}
+		
+	}
+
+	public ArrayList<String> listHash(String seq) {
+		
+		try {
+			
+			String sql = "select h.tag from tblBoard b" + 
+								"    inner join tblHashBoard hb" + 
+								"        on b.seq = hb.pseq" + 
+								"            inner join tblHash h" + 
+								"                on h.seq = hb.hseq" + 
+								"                    where b.seq = ?";
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, seq);
+			rs = stat.executeQuery();
+			
+			ArrayList<String> hlist = new ArrayList<String>();
+			
+			while (rs.next()) {
+				hlist.add(rs.getString("tag"));
+			}
+			
+			return hlist;
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.listHash : " + e.toString());
+		}
+		
+		return null;
+	}
+
+	public void delHash(String seq) {
+		
+		try {
+			
+			String sql = "delete from tblHashBoard where pseq = ?";
+			
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, seq);
+			
+			stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("BoardDAO.delHash : " + e.toString());
 		}
 		
 	}
