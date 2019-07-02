@@ -220,8 +220,10 @@
 
 
 
+- com.test.home.etc > Data.java
+- views > etc > data.jsp
 
-
+- com.test.home.etc > DataOk.java //Ajax 응답 페이지
 
 
 
