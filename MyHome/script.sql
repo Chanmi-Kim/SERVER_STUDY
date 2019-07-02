@@ -291,3 +291,40 @@ select m.mon, count(num) as cnt, nvl(buseo, '홍보부')
             on to_char(i.ibsadate, 'mm') = m.mon
                 group by m.mon, i.buseo
                     order by m.mon asc;
+
+
+
+
+
+
+
+
+
+
+--유저별 등록 게시물 수
+select (select name from tblMember where id = tblBoard.id) as name
+    , count(*) as cnt from tblBoard
+        group by id;
+
+
+-- 게시물 수 + 댓글 수
+select 
+    (select count(*) from tblBoard where id=tblMember.id) as 게시물수,
+    (select count(*) from tblComment where id=tblMember.id) as 댓글수
+from tblMember where id='test';
+
+select 
+    (select count(*) from tblBoard where id=tblMember.id) as cnt1,
+    (select count(*) from tblComment where id=tblMember.id) as cnt2
+from tblMember 
+    where id=(select id from (select id from tblMember order by name desc) 
+        where rownum=1);
+
+
+
+
+
+
+
+
+
