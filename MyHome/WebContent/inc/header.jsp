@@ -8,7 +8,13 @@
 		<li><a href="/myhome/index.do">Home</a></li>
 		<li><a href="/myhome/member/index.do">Member</a></li>
 		<li><a href="/myhome/board/list.do">Board</a></li>
-		<li><a href="">Etc</a></li>
+		<li><a href="/myhome/etc/data.do">Etc</a></li>
 		<li><a href="">Etc</a></li>
 	</ul>
 </header>
+
+
+
+
+
+
