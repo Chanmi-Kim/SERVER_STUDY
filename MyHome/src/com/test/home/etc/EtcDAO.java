@@ -214,6 +214,102 @@ public class EtcDAO {
 		
 		return null;
 	}
+
+	public int addPoint(MyPlaceDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblMarker (seq, lat, lng) values (marker_seq.nextval, ?, ?)";
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, dto.getLat());
+			stat.setString(2, dto.getLng());
+			
+			return stat.executeUpdate();			
+			
+		} catch (Exception e) {
+			
+			System.out.println("EtcDAO.addPoint : " + e.toString());
+		}
+		
+		return 0;
+	}
+
+	public ArrayList<MyPlaceDTO> listPoint() {
+		
+		try {
+			
+			String sql = "select * from tblMarker";
+			stat = conn.prepareStatement(sql);
+			rs = stat.executeQuery();
+			
+			ArrayList<MyPlaceDTO> list = new ArrayList<MyPlaceDTO>();
+			
+			while(rs.next()) {
+				MyPlaceDTO dto = new MyPlaceDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setLat(rs.getString("lat"));
+				dto.setLng(rs.getString("lng"));
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			
+			System.out.println("EtcDAO.listPoint : " + e.toString());
+		}
+		
+		return null;
+	}
+
+	public int addCoffee(MyCoffeeDTO dto) {
+		
+		try {
+			
+			String sql = "insert into tblCoffee (seq, name, lat, lng) values (coffee_seq.nextval, ?, ?, ?)";
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, dto.getName());
+			stat.setString(2, dto.getLat());
+			stat.setString(3, dto.getLng());
+			
+			return stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("EtcDAO.addCoffee : " + e.toString());
+		}
+		
+		return 0;
+	}
+
+	public ArrayList<MyCoffeeDTO> listCoffee() {
+		
+		try {
+			
+			String sql = "select * from tblCoffee";
+			stat = conn.prepareStatement(sql);
+			rs = stat.executeQuery();
+			
+			ArrayList<MyCoffeeDTO> list = new ArrayList<MyCoffeeDTO>();
+			
+			while(rs.next()) {
+				MyCoffeeDTO dto = new MyCoffeeDTO();
+				dto.setSeq(rs.getString("seq"));
+				dto.setName(rs.getString("name"));//
+				dto.setLat(rs.getString("lat"));
+				dto.setLng(rs.getString("lng"));
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			
+			System.out.println("EtcDAO.listCoffee : " + e.toString());
+		}
+		
+		return null;
+	}
 	
 }
 
