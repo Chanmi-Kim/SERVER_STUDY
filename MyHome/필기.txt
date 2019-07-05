@@ -228,6 +228,53 @@
 
 
 
+Open API
+
+- com.test.home.etc > Book.java
+- views > etc > book.jsp
+
+- com.test.home.etc > APIExamSearchBook.java
+- com.test.home.etc > BookData.java
+
+
+지도
+- com.test.home.etc > Map.java
+- views > etc > map01.jsp
+- views > etc > map02.jsp
+- views > etc > map03.jsp
+- views > etc > map04.jsp
+- views > etc > map05.jsp
+- views > etc > map06.jsp
+
+
+지도 + 데이터베이스 + Ajax(선택)
+- 사용자 지정 좌표 점 > 데이터베이스 저장 > 마커 사용
+- 테이블 생성
+- com.test.home.etc > MyPlace.java
+- views > etc > myplace.jsp
+- com.test.home.etc > MyPlaceData.java
+- com.test.home.etc > MyPlaceDTO.java
+
+
+주변 커피숍 지도
+- com.test.home.etc > MyCoffee.java
+- views > etc > mycoffee.jsp
+- com.test.home.etc > MyCoffeeData.java
+- com.test.home.etc > MyCoffeeDTO.java
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
