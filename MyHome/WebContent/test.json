@@ -1,0 +1,128 @@
+{
+	"lastBuildDate": "Wed, 03 Jul 2019 10:16:48 +0900",
+	"total": 4174,
+	"start": 1,
+	"display": 10,
+	"items": [
+		{
+			"title": "Do it! <b>자바</b> 프로그래밍 입문 (개발 10년, 강의 10년! 명강사의 기초 튼튼 코딩 밥상!)",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=13797129",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/137/971/13797129.jpg?type=m1&udate=20180810",
+			"author": "박은종",
+			"price": "25000",
+			"discount": "22500",
+			"publisher": "이지스퍼블리싱",
+			"pubdate": "20180806",
+			"isbn": "1163030198 9791163030195",
+			"description": "왕초보 학생들과 부대끼며 깨달은 눈높이로 <b>자바</b> 학습 노하우 대공개!\n개발 실무 10년, 강의 10년! 명강사의 기초 튼튼 코딩 밥상! \n왕초보 학생들과 부대끼며 깨달은 눈높이로 <b>자바</b> 학습 노하우 대공개!\n비전공자, 문과생도 무릎을 ‘탁!’ 치며 이해하는 20년 경력 명강사의 <b>자바</b> 강의! 프로그래머를 꿈꾸는... "
+		},
+		{
+			"title": "이펙티브 <b>자바</b> (Effective Java)",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=14097515",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/140/975/14097515.jpg?type=m1&udate=20181023",
+			"author": "조슈아 블로크",
+			"price": "36000",
+			"discount": "32400",
+			"publisher": "인사이트",
+			"pubdate": "20181101",
+			"isbn": "8966262287 9788966262281",
+			"description": "<b>자바</b> 플랫폼 모범 사례 완벽 가이드 - JAVA 7, 8, 9 대응<b>자바</b> 6 출시 직후 출간된 『이펙티브 <b>자바</b> 2판』 이후로 <b>자바</b>는 커다란 변화를 겪었다. 그래서 졸트상에 빛나는 이 책도 <b>자바</b> 언어와 라이브러리의 최신 기능을 십분 활용하도록 내용 전반을 철저히 다시 썼다. 모던 <b>자바</b>가 여러 패러다임을... "
+		},
+		{
+			"title": "Do it! <b>자바</b>스크립트 + 제이쿼리 입문 (155개 예제로 기본 잡고, 반응형 웹부터 실무 활용 플러그인까지!)",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=13457579",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/134/575/13457579.jpg?type=m1&udate=20180518",
+			"author": "정인용",
+			"price": "20000",
+			"discount": "18000",
+			"publisher": "이지스퍼블리싱",
+			"pubdate": "20180406",
+			"isbn": "1163030031 9791163030034",
+			"description": "<b>자바</b>스크립트, 제이쿼리의 기본부터 실전에 필요한 핵심까지 모두 담았다!\n‘두잇 시리즈 최고 작품’이라 평가받은 책! 전면 개정판으로 더욱 알차게... <b>자바</b>스크립트를 1도 모르겠다면? 프런트엔드 실무 교육 경력 10년 강사가 엄선한 155개의 예제로 기본부터 실무 활용까지 완벽하게 대비하세요. 실제... "
+		},
+		{
+			"title": "생활코딩! HTML+CSS+<b>자바</b>스크립트",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=14427514",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/144/275/14427514.jpg?type=m1&udate=20190420",
+			"author": "이고잉",
+			"price": "27000",
+			"discount": "24300",
+			"publisher": "위키북스",
+			"pubdate": "20190115",
+			"isbn": "1158391331 9791158391331",
+			"description": "이고잉 님의 HTML/CSS/<b>자바</b>스크립트 강의는 이미 많은 분들에 의해 검증받은 독창적인 강의로 손꼽히고 있습니다. 단순히 HTML/CSS/<b>자바</b>스크립트 기술을 알려주는 데서 그치는 것이 아니라 무엇을... HTML/CSS/<b>자바</b>스크립트를 배운다면 기본은 물론 응용력까지도 금세 키울 수 있을 것입니다.\n\n★ 이 책에서... "
+		},
+		{
+			"title": "Do it! 웹 프로그래밍을 위한 <b>자바</b>스크립트 기본 편",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=14650274",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/146/502/14650274.jpg?type=m1&udate=20190619",
+			"author": "고경희",
+			"price": "18800",
+			"discount": "16920",
+			"publisher": "이지스퍼블리싱",
+			"pubdate": "20190326",
+			"isbn": "1163030643 9791163030645",
+			"description": "웹 프로그래밍을 위한 <b>자바</b>스크립트 기본 편》은 <b>자바</b>스크립트를 통해 웹 프로그래밍에 입문하는 사람들이 가장 먼저 배워야 할 기본 문법을 웹 분야 베스트셀러 저자인 고경희 선생이 모아 엮은 책이다. 137개 예제를 통해 직접 프로그램을 만들면서 기본 문법을 흥미롭게 배운 뒤 ‘1분 복습’, ‘마무리... "
+		},
+		{
+			"title": "<b>자바</b> 웹을 다루는 기술 (실무에서 알아야 할 기술은 따로 있다!)",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=14439459",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/144/394/14439459.jpg?type=m1&udate=20190303",
+			"author": "이병승",
+			"price": "45000",
+			"discount": "40500",
+			"publisher": "길벗",
+			"pubdate": "20190107",
+			"isbn": "1160506825 9791160506822",
+			"description": "최근 효율적으로 개발할 수 있는 웹 프레임워크가 많이 나왔지만, JSP와 서블릿은 <b>자바</b> 웹 개발에서 가장 중요하고도 기본이 되는 내용이다. 기초가... 웹 개발이 처음인 사람부터 기초를 다지고 싶은 초급 개발자까지 이 책 한 권이면 <b>자바</b> 웹 개발의 전체적인 흐름을 잡을 수 있을 것이다."
+		},
+		{
+			"title": "러닝 <b>자바</b>스크립트 (ES6로 제대로 입문하는 모던 <b>자바</b>스크립트 웹 개발)",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=12181869",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/121/818/12181869.jpg?type=m1&udate=20190216",
+			"author": "이선 브라운",
+			"price": "28000",
+			"discount": "25200",
+			"publisher": "한빛미디어",
+			"pubdate": "20170701",
+			"isbn": "8968483388 9788968483387",
+			"description": "ES6로 익히는 고품질 <b>자바</b>스크립트 입문에서 서버 개발까지이 책은 ES6를 포함하여 최신 <b>자바</b>스크립트 개발을 주도하는 언어 특징과 기술, 관련 도구, 패러다임을 포괄적으로 다룬다. 변수나 제어 흐름, 함수와 같은 단순하고 직관적인 주제뿐만 아니라, 비동기 프로그래밍이나 정규표현식 같은 복잡하고... "
+		},
+		{
+			"title": "모던 <b>자바</b>스크립트 입문 (프런트엔드부터 백엔드까지, 핵심은 <b>자바</b>스크립트다!)",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=13447219",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/134/472/13447219.jpg?type=m1&udate=20180608",
+			"author": "이소 히로시",
+			"price": "32000",
+			"discount": "28800",
+			"publisher": "길벗",
+			"pubdate": "20180330",
+			"isbn": "1160504431 9791160504439",
+			"description": "ES6로 배우는 모던 <b>자바</b>스크립트 입문\n<b>자바</b>스크립트는 HTML, CSS와는 달리 변수, 함수처럼 프로그래밍 기초 개념부터 짚어가며 익혀야 한다. 기초... 프런트엔드부터 백엔드까지 핵심이 되는 <b>자바</b>스크립트를 다양한 예제를 직접 실행해보며 확실하게 이해할 수 있다."
+		},
+		{
+			"title": "<b>자바</b> 최적화 (Optimizing Java,가장 빠른 성능을 구현하는 검증된 10가지 기법)",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=14796595",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/147/965/14796595.jpg?type=m1&udate=20190629",
+			"author": "벤저민 J. 에번스|제임스 고프|크리스 뉴랜드",
+			"price": "39000",
+			"discount": "35100",
+			"publisher": "한빛미디어",
+			"pubdate": "20190429",
+			"isbn": "1162241772 9791162241776",
+			"description": "<b>자바</b> 애플리케이션 성능을 한 단계 높여줄 튜닝 이야기\n\n성능 튜닝은 실험과학이다. 추측과 구전 튜닝에 의존할 일이 아니다. 이 책은 복잡한 기술 스택을 다루는 중/고급 <b>자바</b> 개발자에게 정량적이고 검증 가능한 접근 방식으로 <b>자바</b> 애플리케이션 성능을 튜닝하는 방법을 알려준다.\n\n성능 튜닝은 원하는 결과를... "
+		},
+		{
+			"title": "혼자 공부하는 <b>자바</b> (JAVA 8 & 11 지원/무료 동영상 강의 제공)",
+			"link": "http://book.naver.com/bookdb/book_detail.php?bid=15028693",
+			"image": "https://bookthumb-phinf.pstatic.net/cover/150/286/15028693.jpg?type=m1&udate=20190614",
+			"author": "신용권",
+			"price": "24000",
+			"discount": "21600",
+			"publisher": "��빛미디어",
+			"pubdate": "20190610",
+			"isbn": "116224187X 9791162241875",
+			"description": "1:1 과외하듯 배우는 <b>자바</b> 프로그래밍 자습서 (JAVA 8 &11 지원)\n이 책은 독학으로 <b>자바</b>를 배우는 입문자가 ‘꼭 필요한 내용을 제대로’ 학습할 수... 책의 첫 페이지를 펼쳐서 마지막 페이지를 덮을 때까지, 혼자서도 충분히 <b>자바</b>를 배울 수 있다는 자신감과 확신이 계속될 것이다!\n \n20명의 베타리더 검증으로... "
+		}
+	]
+}
