@@ -48,9 +48,8 @@ select * from tblBoard;
 
 
 
-select seq, subject, id, (select name from tblMember where id = b.id) as name, regdate, readcount, round((sysdate - regdate) * 24 * 60) as gap from tblBoard b order by seq desc
-0.004490740740740740740740740740740740740741
-8
+select seq, subject, id, (select name from tblMember where id = b.id) as name, regdate, readcount, round((sysdate - regdate) * 24 * 60) as gap from tblBoard b order by seq desc;
+
 
 
 
@@ -67,9 +66,9 @@ select seq, subject, id, (select name from tblMember where id = b.id) as name
 select * from vwBoard where name like '%길동%' order by seq desc;
 select * from vwBoard where content like '%테스트%' order by seq desc;
 
-select 절 --3
-from 절 -- 1
-where 절 --2
+--select 절 --3
+--from 절 -- 1
+--where 절 --2
 
 
 
@@ -146,8 +145,7 @@ select seq, notice from tblBoard order by seq desc;
 
 
 
-select 0, a.* from vwBoard a where notice = 1 union
-기존 sQL;
+
 
 
 
@@ -309,8 +307,8 @@ select (select name from tblMember where id = tblBoard.id) as name
 
 -- 게시물 수 + 댓글 수
 select 
-    (select count(*) from tblBoard where id=tblMember.id) as 게시물수,
-    (select count(*) from tblComment where id=tblMember.id) as 댓글수
+    (select count(*) from tblBoard where id=tblMember.id) as cnt1,
+    (select count(*) from tblComment where id=tblMember.id) as cnt2
 from tblMember where id='test';
 
 select 
@@ -319,6 +317,44 @@ select
 from tblMember 
     where id=(select id from (select id from tblMember order by name desc) 
         where rownum=1);
+
+
+
+
+-- 좌표 테이블
+create table tblMarker (
+    seq number primary key, -- PK
+    lat number not null, --위도(Latitude)
+    lng number not null --경도(Longitude)
+);
+
+create sequence marker_seq;
+
+select * from tblMarker;
+
+
+
+
+
+-- 좌표 테이블
+create table tblCoffee (
+    seq number primary key,             -- PK
+    name varchar2(100) not null,      --장소명
+    lat number not null,                      --위도(Latitude)
+    lng number not null                      --경도(Longitude)
+);
+
+create sequence coffee_seq;
+
+select * from tblCoffee;
+
+
+
+
+
+
+
+
 
 
 
