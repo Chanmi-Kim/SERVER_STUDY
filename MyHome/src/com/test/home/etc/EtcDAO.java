@@ -310,6 +310,43 @@ public class EtcDAO {
 		
 		return null;
 	}
+
+	public int editCoffee(MyCoffeeDTO dto) {
+		
+		try {
+			
+			String sql = "update tblCoffee set name = ? where seq = ?";
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, dto.getName());
+			stat.setString(2, dto.getSeq());
+			
+			return stat.executeUpdate();
+			
+		} catch (Exception e) {
+			
+			System.out.println("EtcDAO.editCoffee : " + e.toString());
+		}
+		
+		return 0;
+	}
+
+	public int delCoffee(MyCoffeeDTO dto) {
+		
+		try {
+			
+			String sql = "delete from tblCoffee where seq = ?";
+			stat = conn.prepareStatement(sql);
+			stat.setString(1, dto.getSeq());
+			
+			return stat.executeUpdate();			
+			
+		} catch (Exception e) {
+			
+			System.out.println("EtcDAO.delCoffee : " + e.toString());
+		}
+		
+		return 0;
+	}
 	
 }
 
