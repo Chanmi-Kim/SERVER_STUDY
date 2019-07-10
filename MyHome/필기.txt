@@ -264,11 +264,43 @@ Open API
 
 
 
+jQuery Mobile Framework
+- http://jquerymobile.com
+- 프로젝트 : 고객 or 관리자 > 모바일 페이지
+
+모바일 기기(폰, 태블릿)
+1. Native Application
+	- 전용 언어 + 전용 개발 툴 사용
+	- Android : 이클립스 + 자바 > 안드로이드 스튜디오 + 자바 > 안드로이드 스튜디오 + Kotlin(코틀린)
+	- iOS : XCode + Object C > Swift
+	- 윈도우폰 : Visual Studio + C#
+	- 표준 개발 방식 : 습득 난이도 상, 유지 보수 난이도 상 + 기능 풍부, 속도 빠름 
+
+2. Mobile Web
+	- 브라우저 동작
+	- 그냥 웹사이트
+	- 개발 비용 저렴, 개발 속도 빠름, 동작 느림, 기능 적음
+	- 서비스 업무용
+	- 모바일 UI > 각종 라이브러리 + 프레임워크 > jQuery Mobile
+
+3. Hybrid Application
+	- 개발(Mobile Web) > 여러가지 과정 > 앱(Native)
+	- PhoneGap, Cordova, Ionic 등..
 
 
 
+모바일 페이지
+- 모바일 브라우저는 해상도에 대한 특정 표현이 없으면 모든 기기의 너비가 960px이라고 가정한다.
 
+- com.test.myhome.mobile > Ex.java
+- views > mobile > template.jsp
+- views > mobile > ex01.jsp
+- views > mobile > ex02.jsp
 
+- views > mobile > ex03a.jsp
+- views > mobile > ex03b.jsp
+
+- views > mobile > ex04.jsp
 
 
 
