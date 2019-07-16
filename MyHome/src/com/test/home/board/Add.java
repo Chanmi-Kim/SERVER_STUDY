@@ -1,4 +1,4 @@
-﻿package com.test.home.board;
+package com.test.home.board;
 
 import java.io.IOException;
 
