@@ -15,7 +15,7 @@ public class MyCoffee extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		//MyCoffee.java
 		EtcDAO dao = new EtcDAO();
 		
