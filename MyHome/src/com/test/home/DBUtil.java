@@ -1,4 +1,4 @@
-﻿package com.test.home;
+package com.test.home;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
